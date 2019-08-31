@@ -19,10 +19,7 @@ int main() {
 
 	std::cin >> numberOfFloors;
 
-
-
 	Building building1(numberOfFloors);
-	numberOfFloorsLeft.resize(numFloors);
 
 
 	building1.openFloorsLeft();

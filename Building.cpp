@@ -1,9 +1,6 @@
 #include <iostream>
 #include "Building.h"
 
-
-
-
 Building::Building(int numFloors) : numberOfFloors{numFloors}
 {
 	while (numFloors < 0)
