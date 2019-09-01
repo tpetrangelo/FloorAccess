@@ -18,6 +18,8 @@ public:
 
 	void printCompanyInfo();
 
+	void printStatus();
+
 private:
 	int startingFloor;
 	int endingFloor;

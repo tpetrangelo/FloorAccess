@@ -14,6 +14,8 @@ public:
 	void setOccupantStatus(std::string status);
 	std::string getOccupantStatus();
 
+	void printStatus();
+
 private:
 	std::string firstName;
 	std::string lastName;

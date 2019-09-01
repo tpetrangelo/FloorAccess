@@ -60,3 +60,8 @@ void Company::printCompanyInfo()
 	}
 
 }
+
+void Company::printStatus()
+{
+
+}

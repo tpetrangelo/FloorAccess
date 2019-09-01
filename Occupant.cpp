@@ -34,3 +34,7 @@ std::string Occupant::getOccupantStatus()
 {
 	return occupantStatus;
 }
+
+void Occupant::printStatus()
+{
+}

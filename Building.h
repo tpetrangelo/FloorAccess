@@ -8,6 +8,9 @@ class Building {
 
 public:
 	
+	static std::vector<int> numberOfFloorsLeft;
+
+
 	Building(int numFloors);
 	Building();
 	~Building();
@@ -21,9 +24,12 @@ public:
 
 	void companyFloor(int start, int end);
 
+	void printBuildingStatus();
+	void printCompanyStatus();
+	void printOccupantStatus();
+
 private:
 	int numberOfFloors;
-	static std::vector<int> numberOfFloorsLeft;
-
+	const int maxNumberOfCompanies = numberOfFloors - 1;
 };
 
