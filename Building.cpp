@@ -5,6 +5,10 @@ std::vector<int> Building::numberOfFloorsLeft;
 
 Building::Building(int numFloors) : numberOfFloors{numFloors}
 {
+	if (numFloors == 1) {
+		std::cout << "There is only one floor for the lobby!" << std::endl;
+		
+	}
 	while (numFloors < 0)
 	{
 		std::cout << "Invalid number of floors please re-enter: ";
@@ -52,7 +56,7 @@ void Building::openFloorsLeft()
 void Building::companyFloor(int start, int end)
 {
 	int companiesUsedFloors = end - start;
-
+	std::cout << std::endl;
 	for (start; start <= end; start++) {
 		if (numberOfFloorsLeft[start - 1] != 0) {
 			std::cout << "Floor " << start-1 << " already occupied!";
@@ -65,25 +69,6 @@ void Building::companyFloor(int start, int end)
 	}
 }
 
-void Building::printBuildingStatus()
-{
-	std::cout << "Welcome! Would you like to access:" << std::endl
-		<< "[1] - Company" << std::endl << "[2] - Occupant" << std::endl
-		<< "Access Choice: " ;
-}
 
-void Building::printCompanyStatus()
-{
-	std::cout << "Company Access Menu" << std::endl << "-------------------" << std::endl
-		<< "[1] - Add a Company" << std::endl << "[2] - Remove a Company" << std::endl
-		<< "[3] - View all current Companies" << std::endl << "Company Menu Choice: ";
-}
-
-void Building::printOccupantStatus()
-{
-	std::cout << "Occupant Access Menu" << std::endl << "--------------------" << std::endl
-		<< "[1] - Add an Occupant" << std::endl << "[2] - Remove an Occupant" << std::endl
-		<< "[3] - View all current Occupants" << std::endl << "Occupant Menu Choice: ";
-}
 
 

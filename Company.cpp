@@ -19,6 +19,10 @@ Company::Company(std::string nameOfCompany, int firstFloor, int lastFloor) : com
 	newBuilding.companyFloor(firstFloor, lastFloor);
 }
 
+Company::Company()
+{
+}
+
 void Company::setStartingFloor(int sFloor)
 {
 	startingFloor = sFloor;

@@ -130,6 +130,7 @@
     <ClCompile Include="Guest.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Occupant.cpp" />
+    <ClCompile Include="PrintResource.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Building.h" />
@@ -138,6 +139,7 @@
     <ClInclude Include="CompanyEmployee.h" />
     <ClInclude Include="Guest.h" />
     <ClInclude Include="Occupant.h" />
+    <ClInclude Include="PrintResource.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

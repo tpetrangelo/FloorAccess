@@ -5,7 +5,7 @@ class Company
 {
 public:
 	Company(std::string nameOfCompany, int firstFloor, int lastFloor);
-
+	Company();
 
 	void setStartingFloor(int sFloor);
 	int getStartingFloor();

@@ -30,6 +30,6 @@ public:
 
 private:
 	int numberOfFloors;
-	const int maxNumberOfCompanies = numberOfFloors - 1;
+	const int maxNumberOfCompanies{ numberOfFloors - 1 };
 };
 
