@@ -15,13 +15,14 @@ int main() {
 	int companyCount{ 0 };
 	int firstFloor{ 0 };
 	int lastFloor{ 0 };
+	static int companyRemove{ 0 };
 	std::string companyName;
 	PrintResource printView;
 	printView.runStartMenu();
 	std::cin >> numberOfFloors;
 	Building building1(numberOfFloors);
 	Building::numberOfFloorsLeft.resize( numberOfFloors );
-	static std::vector<Company> newCompany;
+	std::vector<Company> newCompany;
 
 	while (1) {
 		printView.printBuildingStatus();
@@ -31,6 +32,7 @@ int main() {
 			std::cin >> input;
 			if (input == 1) {
 				companyCount++;
+
 				newCompany.resize(companyCount);
 				printView.newCompanyName();
 				std::cin >> companyName;
@@ -39,22 +41,24 @@ int main() {
 				std::cin >> firstFloor;
 				std::cout << "Please enter your company's last floor: ";
 				std::cin >> lastFloor;
+
+				if (companyCount == 1) {
+					newCompany.pop_back();
+				}
 				newCompany.push_back(Company(companyName, firstFloor, lastFloor));
+				
 				std::cout << companyName << " has been added to the directory!" << std::endl;
 				std::cout << companyName << " first floor: " << firstFloor << std::endl;
 				std::cout << companyName << " last floor: " << lastFloor << std::endl;
 				continue;
 			}
 			else if (input == 2) {
-
-			}
-			else if (input == 3) {
 				for (auto& companies : newCompany) {
 					companies.printCompanyInfo();
 				}
 			}
 			else {
-
+				//invalid input try throw
 			}
 		}
 		else if (input == 2) {

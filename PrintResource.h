@@ -8,7 +8,7 @@ public:
 	void printOccupantStatus();
 	void runStartMenu();
 	void newCompanyName();
-	void printCompanies();
+
 private:
 };
 
