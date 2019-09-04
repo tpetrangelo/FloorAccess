@@ -45,7 +45,7 @@ bool Building::hasAccess()
 void Building::openFloorsLeft()
 {
 	std::cout << "Floors open for occupation: ";
-	for (size_t i = 1; i < numberOfFloorsLeft.size(); i++) {
+	for (size_t i = 0; i < numberOfFloorsLeft.size(); i++) {
 		if (numberOfFloorsLeft[i] == 0) {
 			std::cout << "[" <<  i + 1 << "] ";
 		}
@@ -67,6 +67,20 @@ void Building::companyFloor(int start, int end)
 		}
 		
 	}
+}
+
+bool Building::validateCompanyFloors(int startFloor, int endFloor)
+{
+	for (startFloor; startFloor <= endFloor; startFloor++) {
+		if (numberOfFloorsLeft[startFloor - 1] != 0) {
+			std::cout << "Floor " << startFloor - 1 << " already occupied!";
+			return false;
+		}
+		else {
+			numberOfFloorsLeft[startFloor - 1] = startFloor;
+		}
+	}
+	return true;
 }
 
 

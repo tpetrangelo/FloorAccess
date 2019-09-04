@@ -28,6 +28,8 @@ public:
 	void printCompanyStatus();
 	void printOccupantStatus();
 
+	bool validateCompanyFloors(int startFloor, int endFloor);
+
 private:
 	int numberOfFloors;
 	const int maxNumberOfCompanies{ numberOfFloors - 1 };

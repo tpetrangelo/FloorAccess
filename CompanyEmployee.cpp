@@ -6,6 +6,10 @@ CompanyEmployee::CompanyEmployee(std::string fName, std::string lName, std::stri
 	companyEmployed = companyWorkedFor;
 	}
 
+CompanyEmployee::CompanyEmployee()
+{
+}
+
 
 void CompanyEmployee::setCompanyWorkedFor(std::string company)
 {

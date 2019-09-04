@@ -6,7 +6,7 @@ class BuildingEmployee : public Occupant
 public:
 
 	BuildingEmployee(std::string fName, std::string lName, std::string status, int identification, std::string position);
-
+	BuildingEmployee();
 	void setPosition(std::string position);
 	std::string getPosition();
 

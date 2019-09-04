@@ -7,6 +7,10 @@ BuildingEmployee::BuildingEmployee(std::string fName, std::string lName, std::st
 	buildingPosition = position;
 }
 
+BuildingEmployee::BuildingEmployee()
+{
+}
+
 void BuildingEmployee::setPosition(std::string position)
 {
 	buildingPosition = position;

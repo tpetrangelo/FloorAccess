@@ -5,6 +5,10 @@ Occupant::Occupant(std::string fName, std::string lName, std::string status) : f
 
 }
 
+Occupant::Occupant()
+{
+}
+
 void Occupant::setFirstName(std::string fName)
 {
 	firstName = fName;

@@ -4,6 +4,7 @@ class Occupant
 {
 public:
 	Occupant(std::string fName, std::string lName, std::string status);
+	Occupant();
 
 	void setFirstName(std::string fName);
 	std::string getFirstName();

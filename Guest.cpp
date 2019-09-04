@@ -5,6 +5,10 @@ Guest::Guest(std::string fName, std::string lName, std::string status, int age) 
 	age = guestAge;
 }
 
+Guest::Guest()
+{
+}
+
 void Guest::setAge(int age)
 {
 	age = guestAge;

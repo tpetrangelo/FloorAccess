@@ -129,6 +129,7 @@
     <ClCompile Include="CompanyEmployee.cpp" />
     <ClCompile Include="Guest.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Occupant.cpp" />
     <ClCompile Include="PrintResource.cpp" />
   </ItemGroup>
@@ -138,6 +139,7 @@
     <ClInclude Include="Company.h" />
     <ClInclude Include="CompanyEmployee.h" />
     <ClInclude Include="Guest.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Occupant.h" />
     <ClInclude Include="PrintResource.h" />
   </ItemGroup>
