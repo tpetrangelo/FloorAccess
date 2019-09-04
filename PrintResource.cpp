@@ -1,6 +1,7 @@
 #include "PrintResource.h"
 #include "Company.h"
 #include <iostream>
+#include <string>
 PrintResource::PrintResource()
 {
 }
@@ -35,6 +36,13 @@ void PrintResource::runStartMenu()
 void PrintResource::newCompanyName()
 {
 	std::cout << "Please enter the name of your new company: ";
+}
+
+void PrintResource::companyAddition(std::string company, int firstFloor, int lastFloor)
+{
+	std::cout << company << " has been added to the directory!" << std::endl;
+	std::cout << company << " first floor: " << firstFloor << std::endl;
+	std::cout << company << " last floor: " << lastFloor << std::endl;
 }
 
 

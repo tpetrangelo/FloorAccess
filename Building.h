@@ -22,7 +22,7 @@ public:
 
 	void openFloorsLeft();
 
-	void companyFloor(int start, int end);
+	/*void companyFloor(int start, int end);*/
 
 	void printBuildingStatus();
 	void printCompanyStatus();

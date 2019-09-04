@@ -6,7 +6,7 @@ std::vector<int> Building::numberOfFloorsLeft;
 Building::Building(int numFloors) : numberOfFloors{numFloors}
 {
 	if (numFloors == 1) {
-		std::cout << "There is only one floor for the lobby!" << std::endl;
+		std::cout << "There is only one floor for the lobby!" << std::endl << std::endl;
 		
 	}
 	while (numFloors < 0)
@@ -45,7 +45,7 @@ bool Building::hasAccess()
 void Building::openFloorsLeft()
 {
 	std::cout << "Floors open for occupation: ";
-	for (size_t i = 0; i < numberOfFloorsLeft.size(); i++) {
+	for (size_t i = 1; i < numberOfFloorsLeft.size(); i++) {
 		if (numberOfFloorsLeft[i] == 0) {
 			std::cout << "[" <<  i + 1 << "] ";
 		}
@@ -53,31 +53,39 @@ void Building::openFloorsLeft()
 	std::cout << std::endl;
 }
 
-void Building::companyFloor(int start, int end)
-{
-	int companiesUsedFloors = end - start;
-	std::cout << std::endl;
-	for (start; start <= end; start++) {
-		if (numberOfFloorsLeft[start - 1] != 0) {
-			std::cout << "Floor " << start-1 << " already occupied!";
-			break;
-		}
-		else {
-			numberOfFloorsLeft[start - 1] = start;
-		}
-		
-	}
-}
+//void Building::companyFloor(int start, int end)
+//{
+//	int companiesUsedFloors = end - start;
+//	std::cout << std::endl;
+//	for (start; start <= end; start++) {
+//		if (numberOfFloorsLeft[start - 1] != 0) {
+//			std::cout << "Floor " << start-1 << " already occupied!";
+//			break;
+//		}
+//		else {
+//			numberOfFloorsLeft[start - 1] = start;
+//		}
+//		
+//	}
+//}
 
 bool Building::validateCompanyFloors(int startFloor, int endFloor)
 {
+	int floorErase = startFloor;
+	if (endFloor < startFloor) {
+		std::cout << "First floor cannot be greater than last floor of company!" << std::endl;
+		return false;
+	}
 	for (startFloor; startFloor <= endFloor; startFloor++) {
-		if (numberOfFloorsLeft[startFloor - 1] != 0) {
-			std::cout << "Floor " << startFloor - 1 << " already occupied!";
+		if (numberOfFloorsLeft.at(startFloor-1) != 0) {
+			std::cout << "Floor " << startFloor << " already occupied!";
+			for (floorErase; floorErase <= startFloor; floorErase++) {
+				numberOfFloorsLeft.at(floorErase - 1) = 0;
+			}
 			return false;
 		}
 		else {
-			numberOfFloorsLeft[startFloor - 1] = startFloor;
+			numberOfFloorsLeft.at(startFloor - 1) = startFloor;
 		}
 	}
 	return true;

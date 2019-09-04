@@ -20,7 +20,7 @@ void Menu::userStartMenu()
 	std::cin >> numberOfFloors;
 	Building building(numberOfFloors);
 	Building::numberOfFloorsLeft.resize(numberOfFloors);
-	Building::numberOfFloorsLeft[0] = 9999;
+	Building::numberOfFloorsLeft[0] = 0;
 }
 
 void Menu::userMenu()
@@ -44,13 +44,13 @@ void Menu::userMenu()
 				std::cin >> firstFloor;
 				std::cout << "Please enter your company's last floor: ";
 				std::cin >> lastFloor;
-				building.validateCompanyFloors(firstFloor, lastFloor);
-				std::cout << std::endl;
-				newCompany.push_back(Company(companyName, firstFloor, lastFloor));
-				
-				std::cout << companyName << " has been added to the directory!" << std::endl;
-				std::cout << companyName << " first floor: " << firstFloor << std::endl;
-				std::cout << companyName << " last floor: " << lastFloor << std::endl;
+				if (building.validateCompanyFloors(firstFloor, lastFloor) == true) {
+					newCompany.push_back(Company(companyName, firstFloor, lastFloor));
+					printView.companyAddition(companyName, firstFloor, lastFloor);
+				}
+				else {
+					std::cout << companyName << " could not be added to the directory!" << std::endl;
+				}
 				continue;
 			}
 			else if (input == 2) {

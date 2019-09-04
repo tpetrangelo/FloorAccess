@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+
 class PrintResource
 {
 public:
@@ -8,7 +10,7 @@ public:
 	void printOccupantStatus();
 	void runStartMenu();
 	void newCompanyName();
-
+	void companyAddition(std::string company, int firstFloor, int lastFloor);
 private:
 };
 
