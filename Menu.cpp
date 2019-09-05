@@ -30,6 +30,7 @@ void Menu::userStartMenu()
 	Building::numberOfFloorsLeft[0] = 0;
 }
 
+
 void Menu::userMenu()
 {
 	while (1) {
@@ -61,12 +62,11 @@ void Menu::userMenu()
 				else {
 					std::cout << companyName << " could not be added to the directory!" << std::endl;
 				}
-				continue
+				continue;
 			}
 			//view all companies
-			}
 			else if (input == 2) {
-				for (auto & company : newCompany) {
+				for (auto& company : newCompany) {
 					company.printCompanyInfo();
 				}
 			}
@@ -88,21 +88,21 @@ void Menu::userMenu()
 				std::cin >> input;
 				//Guest menu
 				if (input == 1) {
-					guestCount++;
-					newGuest.resize(guestCount);
-					guest.printOccupantMenu();
-
-					guest.printStatus();
-					std::cin >> input;
 					//add a guest
-					if (input == 1) 
+					if (input == 1) {
+						guestCount++;
+						newGuest.resize(guestCount);
+						guest.printOccupantMenu();
+
+						guest.printStatus();
+						std::cin >> input;
 						std::cout << "Please enter your guest's first name: ";
 						std::cin >> firstName;
 						std::cout << "Please enter your guest's last name: ";
 						std::cin >> lastName;
 						std::cout << "Please enter your guest's age: ";
 						std::cin >> age;
-						newGuest.push_back(Guest(firstName, lastName,"Guest", age));
+						newGuest.push_back(Guest(firstName, lastName, "Guest", age));
 						printView.guestAddition(firstName, lastName, age);
 					}
 					//view all current guests
@@ -136,7 +136,6 @@ void Menu::userMenu()
 						while (input != 1 && input != 2 && input != 3) {
 							std::cout << "Invalid Input. Please re-enter\n ";
 							break;
-
 						}
 					}
 				}
@@ -189,10 +188,8 @@ void Menu::userMenu()
 			while (input != 1 && input != 2) {
 				std::cout << "Invalid Input. Please re-enter\n ";
 				break;
-
 			}
 
 		}
 	}
 }
-
