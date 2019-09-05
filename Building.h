@@ -9,7 +9,7 @@ class Building {
 public:
 	
 	static std::vector<int> numberOfFloorsLeft;
-
+	
 
 	Building(int numFloors);
 	Building();

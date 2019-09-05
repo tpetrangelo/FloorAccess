@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include "Occupant.h"
-class CompanyEmployee : public Occupant
+class CompanyEmployee : virtual public Occupant
 {
 public:
 
@@ -13,6 +13,8 @@ public:
 	void setID(int identification);
 	int getID();
 
+	virtual void printStatus();
+	virtual void printOccupantMenu();
 
 
 private:

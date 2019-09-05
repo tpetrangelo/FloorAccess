@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include "Occupant.h"
-class BuildingEmployee : public Occupant
+class BuildingEmployee :  virtual public Occupant
 {
 public:
 
@@ -9,6 +9,10 @@ public:
 	BuildingEmployee();
 	void setPosition(std::string position);
 	std::string getPosition();
+
+	virtual void printStatus();
+	virtual void printOccupantMenu();
+
 
 private:
 	std::string buildingPosition;

@@ -15,7 +15,8 @@ public:
 	void setOccupantStatus(std::string status);
 	std::string getOccupantStatus();
 
-	void printStatus();
+	virtual void printStatus();
+	virtual void printOccupantMenu();
 
 private:
 	std::string firstName;

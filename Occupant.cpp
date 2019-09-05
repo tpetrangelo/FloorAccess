@@ -42,3 +42,8 @@ std::string Occupant::getOccupantStatus()
 void Occupant::printStatus()
 {
 }
+
+void Occupant::printOccupantMenu()
+{
+}
+

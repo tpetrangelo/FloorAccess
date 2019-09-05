@@ -22,7 +22,7 @@ void PrintResource::printCompanyStatus()
 void PrintResource::printOccupantStatus()
 {
 	std::cout << "Occupant Access Menu" << std::endl << "--------------------" << std::endl
-		<< "[1] - Add an Occupant" << std::endl << "[2] - View all current occupants" << std::endl
+		<< "[1] - Add an Occupant" << std::endl << "[2] - View current number of occupants" << std::endl
 		<< "Occupant Menu Choice: ";
 }
 
@@ -43,6 +43,20 @@ void PrintResource::companyAddition(std::string company, int firstFloor, int las
 	std::cout << company << " has been added to the directory!" << std::endl;
 	std::cout << company << " first floor: " << firstFloor << std::endl;
 	std::cout << company << " last floor: " << lastFloor << std::endl;
+}
+
+void PrintResource::guestAddition(std::string firstName, std::string lastName, int age)
+{
+	std::cout << firstName << " "<< lastName << ", Age: " << age << " has been added to the directory!" << std::endl;
+}
+
+void PrintResource::printOccupantOptions()
+{
+	std::cout << "Occupant Access Menu" << std::endl << "--------------------" << std::endl
+		<< "[1] - Guest" << std::endl << "[2] - Company Employee" << std::endl
+		<< "[3] - Building Employee" << std::endl
+		<< "Occupant Menu Choice: ";
+
 }
 
 

@@ -11,6 +11,9 @@ public:
 	void runStartMenu();
 	void newCompanyName();
 	void companyAddition(std::string company, int firstFloor, int lastFloor);
-private:
+	void guestAddition(std::string firstName, std::string lastName, int age);
+
+	void printOccupantOptions();
+	private:
 };
 
