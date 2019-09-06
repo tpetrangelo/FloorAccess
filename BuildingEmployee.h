@@ -15,6 +15,9 @@ public:
 
 
 private:
+	std::string status;
+	std::string firstName;
+	std::string lastName;
 	std::string buildingPosition;
 	int id;
 };

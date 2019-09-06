@@ -25,11 +25,11 @@ private:
 	int numberOfFloors;
 	int input{ 0 };
 	int companyCount{ 0 };
-	int guestCount{ 0 };
-	int companyEmployeeCount{ 0 };
-	int buildingEmployeeCount{ 0 };
+
 	int firstFloor{ 0 };
 	int lastFloor{ 0 };
+	int id{ 0 };
+	std::string position;
 	std::string firstName;
 	std::string lastName;
 	int age{ 0 };

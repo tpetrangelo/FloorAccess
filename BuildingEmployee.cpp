@@ -10,6 +10,11 @@ BuildingEmployee::BuildingEmployee(std::string fName, std::string lName, std::st
 
 BuildingEmployee::BuildingEmployee()
 {
+	firstName = "Joe";
+	lastName = "Smith";
+	status = "Building Employee";
+	id = 12345;
+	buildingPosition = "Building Help";
 }
 
 void BuildingEmployee::setPosition(std::string position)
@@ -24,12 +29,15 @@ std::string BuildingEmployee::getPosition()
 
 void BuildingEmployee::printStatus()
 {
+	std::cout << "First Name: " << firstName << std::endl
+		<< "Last Name: " << lastName << std::endl
+		<< "Position: " << buildingPosition;
 }
 
 void BuildingEmployee::printOccupantMenu()
 {
 	std::cout << "Building Employee Access Menu" << std::endl << "--------------------" << std::endl
-		<< "[1] - Add a Company Employee" << std::endl << "[2] - View all current Building Employees" << std::endl
+		<< "[1] - Add a Building Employee" << std::endl << "[2] - View all current Building Employees" << std::endl
 		<< "Building Employee Menu Choice: ";
 }
 

@@ -23,6 +23,9 @@ int Guest::getAge()
 
 void Guest::printStatus()
 {
+	std::cout << "First Name: " << firstName << std::endl
+		<<  "Last Name: " << lastName << std::endl
+		<<  "Age: " << guestAge;
 }
 
 void Guest::printOccupantMenu()

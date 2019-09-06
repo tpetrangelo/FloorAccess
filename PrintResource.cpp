@@ -22,7 +22,7 @@ void PrintResource::printCompanyStatus()
 void PrintResource::printOccupantStatus()
 {
 	std::cout << "Occupant Access Menu" << std::endl << "--------------------" << std::endl
-		<< "[1] - Add an Occupant" << std::endl << "[2] - View current number of occupants" << std::endl
+		<< "[1] - Occupant Options" << std::endl << "[2] - View current number of occupants" << std::endl
 		<< "Occupant Menu Choice: ";
 }
 
@@ -50,6 +50,12 @@ void PrintResource::guestAddition(std::string firstName, std::string lastName, i
 	std::cout << firstName << " "<< lastName << ", Age: " << age << " has been added to the directory!" << std::endl;
 }
 
+void PrintResource::buildingEmployeeAddition(std::string firstName, std::string lastName, std::string position)
+{
+	std::cout << firstName << " " << lastName << ", Position: " << position << ", has been added to the directory!" << std::endl;
+
+}
+
 void PrintResource::printOccupantOptions()
 {
 	std::cout << "Occupant Access Menu" << std::endl << "--------------------" << std::endl
@@ -57,6 +63,14 @@ void PrintResource::printOccupantOptions()
 		<< "[3] - Building Employee" << std::endl
 		<< "Occupant Menu Choice: ";
 
+}
+
+void PrintResource::printOccupantNumber(int guestCount, int companyEmployeeCount, int buildingEmployeeCount)
+{
+	std::cout << "Number of Guests - [" << guestCount << "]" << std::endl;
+	std::cout << "Number of Company Employees - [" << companyEmployeeCount << "]" << std::endl;
+	std::cout << "Number of Building Employees - [" << buildingEmployeeCount << "]" << std::endl;
+	std::cout << std::endl;
 }
 
 
