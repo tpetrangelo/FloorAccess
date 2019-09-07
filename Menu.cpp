@@ -66,7 +66,7 @@ void Menu::userMenu()
 				else {
 					std::cout << companyName << " could not be added to the directory!" << std::endl;
 				}
-				continue;
+				break;
 			}
 			//view all companies
 			else if (input == 2) {
@@ -112,14 +112,14 @@ void Menu::userMenu()
 						std::cout << std::endl;
 						newGuest.push_back(Guest(firstName, lastName, "Guest", age));
 						printView.guestAddition(firstName, lastName, age);
-						continue;
+						break;
 					}
 					//view all current guests
 					else if (input == 2) {
 						for (auto& guests : newGuest) {
 							guests.printStatus();
 						}
-						continue;
+						break;
 					}
 					//error checking
 					else {
@@ -172,7 +172,7 @@ void Menu::userMenu()
 						newBuildingEmployee.push_back(BuildingEmployee(firstName, lastName,"Building Employee", id, position));
 						printView.buildingEmployeeAddition(firstName,lastName,position);
 						std::cout << std::endl;
-						continue;
+						break;
 					}
 					//view all current building employees
 					else if (input == 2) {
@@ -201,7 +201,7 @@ void Menu::userMenu()
 			//Print out number of Occupants, printed by class of occupant
 			else if (input == 2) {
 			printView.printOccupantNumber(guestCount, companyEmployeeCount, buildingEmployeeCount);
-			continue;
+			break;
 			}
 			//validation
 			else {
