@@ -42,6 +42,7 @@ std::string Company::getCompanyName()
 
 void Company::printCompanyInfo()
 {
+	std::cout << "----------------------------------------" << std::endl;
 	std::cout << "Company Name: " << getCompanyName() << std::endl;
 	if (getStartingFloor() == getEndingFloor()) {
 		std::cout << getCompanyName() << " Occupies Floor: " << getStartingFloor() << std::endl;
@@ -50,10 +51,7 @@ void Company::printCompanyInfo()
 		std::cout << getCompanyName() << " Occupies Floors: " << getStartingFloor() << " through " << getEndingFloor() << std::endl;
 	}
 	std::cout << std::endl;
+	std::cout << "----------------------------------------" << std::endl;
 
 }
 
-void Company::printStatus()
-{
-
-}

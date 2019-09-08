@@ -4,7 +4,7 @@
 
 Guest::Guest(std::string fName, std::string lName, std::string status, int age) : Occupant(fName,lName, status)
 {
-	age = guestAge;
+	guestAge = age;
 }
 
 Guest::Guest()
@@ -23,9 +23,14 @@ int Guest::getAge()
 
 void Guest::printStatus()
 {
-	std::cout << "First Name: " << firstName << std::endl
-		<<  "Last Name: " << lastName << std::endl
-		<<  "Age: " << guestAge;
+	std::cout << "----------------------------------------" << std::endl;
+
+	std::cout << "First Name: " << getFirstName() << std::endl
+		<< "Last Name: " << getLastName() << std::endl
+		<< "Age: " << getAge() << std::endl;
+
+	std::cout << "----------------------------------------" << std::endl;
+
 }
 
 void Guest::printOccupantMenu()

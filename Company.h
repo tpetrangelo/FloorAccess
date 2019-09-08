@@ -18,12 +18,13 @@ public:
 
 	void printCompanyInfo();
 
-	void printStatus();
 
 private:
+
 	int startingFloor;
 	int endingFloor;
 	std::string companyName;
 	Building newBuilding;
+
 };
 

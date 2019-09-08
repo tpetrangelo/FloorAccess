@@ -29,9 +29,14 @@ std::string BuildingEmployee::getPosition()
 
 void BuildingEmployee::printStatus()
 {
-	std::cout << "First Name: " << firstName << std::endl
-		<< "Last Name: " << lastName << std::endl
-		<< "Position: " << buildingPosition;
+	std::cout << "----------------------------------------" << std::endl;
+
+	std::cout << "First Name: " << getFirstName() << std::endl
+		<< "Last Name: " << getLastName() << std::endl
+		<< "Position: " << getPosition() << std::endl;
+
+	std::cout << "----------------------------------------" << std::endl;
+
 }
 
 void BuildingEmployee::printOccupantMenu()

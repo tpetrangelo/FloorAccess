@@ -10,28 +10,15 @@ public:
 	
 	static std::vector<int> numberOfFloorsLeft;
 	
-
 	Building(int numFloors);
 	Building();
 	~Building();
 	
-	void giveAccess();
-	void removeAccess();
-
-	bool hasAccess();
-
 	void openFloorsLeft();
-
-	/*void companyFloor(int start, int end);*/
-
-	void printBuildingStatus();
-	void printCompanyStatus();
-	void printOccupantStatus();
-
 	bool validateCompanyFloors(int startFloor, int endFloor);
 
 private:
-	int numberOfFloors;
+	int numberOfFloors{ 0 };
 	const int maxNumberOfCompanies{ numberOfFloors - 1 };
 };
 

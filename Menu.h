@@ -9,7 +9,6 @@
 class Menu
 {
 public:
-	Menu();
 	void userStartMenu();
 	void userMenu();
 
@@ -22,7 +21,7 @@ private:
 	BuildingEmployee buildEmpyloyee;
 	Company company;
 
-	int numberOfFloors;
+	int numberOfFloors{ 0 };
 	int input{ 0 };
 	int companyCount{ 0 };
 
@@ -34,6 +33,7 @@ private:
 	std::string lastName;
 	int age{ 0 };
 	std::string companyName;
+	std::string companyEmployed;
 
 
 };

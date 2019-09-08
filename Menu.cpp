@@ -19,14 +19,22 @@ static int companyEmployeeCount{ 0 };
 static int buildingEmployeeCount{ 0 };
 
 
-Menu::Menu()
-{
-}
+
 
 void Menu::userStartMenu()
 {
 	printView.runStartMenu();
 	std::cin >> numberOfFloors;
+	std::cout << std::endl;
+
+	while (numberOfFloors == 1 || numberOfFloors < 0) {
+		
+		std::cout << "There must be a postive number of floors, greater than one , please re-enter: ";
+		std::cin >> numberOfFloors;
+		std::cout << std::endl;
+	}
+	
+	newCompany.reserve(numberOfFloors-1);
 	Building building(numberOfFloors);
 	Building::numberOfFloorsLeft.resize(numberOfFloors);
 	Building::numberOfFloorsLeft[0] = 0;
@@ -48,7 +56,7 @@ void Menu::userMenu()
 			if (input == 1) {
 				companyCount++;
 
-				newCompany.resize(companyCount);
+				
 				printView.newCompanyName();
 				std::cin >> companyName;
 				building.openFloorsLeft();
@@ -58,21 +66,28 @@ void Menu::userMenu()
 				std::cin >> lastFloor;
 				std::cout << std::endl;
 				if (building.validateCompanyFloors(firstFloor, lastFloor) == true) {
-					//find out why there is garbage when printing out companies
 					newCompany.push_back(Company(companyName, firstFloor, lastFloor));
 					printView.companyAddition(companyName, firstFloor, lastFloor);
 					std::cout << std::endl;
 				}
 				else {
-					std::cout << companyName << " could not be added to the directory!" << std::endl;
+					std::cout << companyName << " could not be added to the directory!" << std::endl << std::endl;
+					companyCount--;
 				}
-				break;
+				continue;
 			}
 			//view all companies
 			else if (input == 2) {
-				for (auto& company : newCompany) {
-					company.printCompanyInfo();
+				if (newCompany.empty() == true) {
+					std::cout << "There are no companies in the directory!" << std::endl << std::endl;
 				}
+				else {
+					std::cout << "Company Directory" << std::endl;
+					for (auto& company : newCompany) {
+						company.printCompanyInfo();
+					}
+				}
+
 			}
 			//error validation
 			else {
@@ -100,7 +115,7 @@ void Menu::userMenu()
 					//add a guest
 					if (input == 1) {
 						guestCount++;
-						newGuest.resize(guestCount);
+						newGuest.reserve(guestCount);
 
 					
 						std::cout << "Please enter your guest's first name: ";
@@ -112,14 +127,20 @@ void Menu::userMenu()
 						std::cout << std::endl;
 						newGuest.push_back(Guest(firstName, lastName, "Guest", age));
 						printView.guestAddition(firstName, lastName, age);
-						break;
+						continue;
 					}
 					//view all current guests
 					else if (input == 2) {
-						for (auto& guests : newGuest) {
-							guests.printStatus();
+						if (newGuest.empty() == true) {
+							std::cout << "There are no guests in the directory!" << std::endl << std::endl;
 						}
-						break;
+						else {
+							std::cout << "Guest Directory" << std::endl;
+							for (auto& guests : newGuest) {
+								guests.printStatus();
+							}
+						}
+						continue;
 					}
 					//error checking
 					else {
@@ -133,16 +154,62 @@ void Menu::userMenu()
 				//company employee menu
 				else if (input == 2) {
 					compEmployee.printOccupantMenu();
-					compEmployee.printStatus();
-					std:: cin >> input; 
+					std::cin >> input; 
 					std::cout << std::endl;
 					//add a company employee
 					if (input == 1) {
-						
+						bool companyCheck = false;
+						companyEmployeeCount++;
+						newCompanyEmployee.reserve(companyEmployeeCount);
+						std::cout << "Please enter your company employee's first name: ";
+						std::cin >> firstName;
+						std::cout << "Please enter your company employee's last name: ";
+						std::cin >> lastName;
+						std::cout << "Current Companies in the directory" << std::endl;
+						std::cout << "----------------------------------" << std::endl;
+						if (newCompany.empty() == true) {
+							std::cout << "There are no companies in the directory!" << std::endl << std::endl;
+							std::cout << firstName << " " << lastName << " could not be added to the directory!" << std::endl << std::endl;
+							continue;
+						}
+						else {
+							std::cout << "Company Directory" << std::endl;
+							for (auto& company : newCompany) {
+								company.printCompanyInfo();
+							}
+						}
+						std::cout << "Please enter your company employee's employer based on the provided companies in the directory: ";
+						std::cin >> companyEmployed;
+						for (auto& companyDirectory : newCompany) {
+							if (companyDirectory.getCompanyName() == companyEmployed) {
+								companyCheck = true;
+								break;
+							}
+						}
+
+						if (companyCheck) {
+							newCompanyEmployee.push_back(CompanyEmployee(firstName, lastName, "Company Employee", companyEmployed));
+							printView.companyEmployeeAddition(firstName, lastName, companyEmployed);
+						}
+						else {
+							std::cout << firstName << " " << lastName << " could not be added, as " << companyEmployed << " is not in directory!" << std::endl;
+							companyEmployeeCount--;
+						}
+						continue;
+
 					}
 					//view all current company employees
 					else if (input == 2) {
-
+						if (newCompanyEmployee.empty() == true) {
+							std::cout << "There are no company employees in the directory!" << std::endl << std::endl;
+						}
+						else {
+							for (auto& compEmp : newCompanyEmployee) {
+								compEmp.printStatus();
+							}
+						
+						}
+						continue;
 					}
 					//error checking
 					else {
@@ -160,7 +227,7 @@ void Menu::userMenu()
 					//add a building employee
 					if (input == 1) {
 						buildingEmployeeCount++;
-						newBuildingEmployee.resize(buildingEmployeeCount);
+						newBuildingEmployee.reserve(buildingEmployeeCount);
 						std::cout << "Please enter the building employees's first name: ";
 						std::cin >> firstName;
 						std::cout << "Please enter your building employees's last name: ";
@@ -172,13 +239,20 @@ void Menu::userMenu()
 						newBuildingEmployee.push_back(BuildingEmployee(firstName, lastName,"Building Employee", id, position));
 						printView.buildingEmployeeAddition(firstName,lastName,position);
 						std::cout << std::endl;
-						break;
+						continue;
 					}
 					//view all current building employees
 					else if (input == 2) {
-						for (auto& buildEmp : newBuildingEmployee) {
-							buildEmp.printStatus();
+						if (newBuildingEmployee.empty() == true) {
+							std::cout << "There are no building employees in the directory!" << std::endl << std::endl;
 						}
+						else {
+							std::cout << "Building Employee Directory" << std::endl;
+							for (auto& buildEmp : newBuildingEmployee) {
+								buildEmp.printStatus();
+							}
+						}
+						continue;
 					}
 					//error checking
 					else {
@@ -201,7 +275,7 @@ void Menu::userMenu()
 			//Print out number of Occupants, printed by class of occupant
 			else if (input == 2) {
 			printView.printOccupantNumber(guestCount, companyEmployeeCount, buildingEmployeeCount);
-			break;
+			continue;
 			}
 			//validation
 			else {

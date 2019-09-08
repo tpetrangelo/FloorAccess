@@ -1,14 +1,14 @@
 #include "CompanyEmployee.h"
 #include "Occupant.h"
 #include <iostream>
-CompanyEmployee::CompanyEmployee(std::string fName, std::string lName, std::string status, int identification, std::string companyWorkedFor) : Occupant(fName, lName, status)
+CompanyEmployee::CompanyEmployee(std::string fName, std::string lName, std::string status, std::string companyWorkedFor) : Occupant(fName, lName, status)
 	{
-	id = identification; 
 	companyEmployed = companyWorkedFor;
 	}
 
 CompanyEmployee::CompanyEmployee()
 {
+	companyEmployed = "NULL";
 }
 
 
@@ -22,18 +22,16 @@ std::string CompanyEmployee::getCompanyWorkedFor()
 	return companyEmployed;
 }
 
-void CompanyEmployee::setID(int identification)
-{
-	identification = id;
-}
-
-int CompanyEmployee::getID()
-{
-	return id;
-}
 
 void CompanyEmployee::printStatus()
 {
+	std::cout << "----------------------------------------" << std::endl;
+
+	std::cout << "First Name: " << getFirstName() << std::endl
+		<< "Last Name: " << getLastName() << std::endl
+		<< "Company Employed At: " << getCompanyWorkedFor() << std::endl;
+
+	std::cout << "----------------------------------------" << std::endl;
 }
 
 void CompanyEmployee::printOccupantMenu()

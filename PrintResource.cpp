@@ -41,13 +41,19 @@ void PrintResource::newCompanyName()
 void PrintResource::companyAddition(std::string company, int firstFloor, int lastFloor)
 {
 	std::cout << company << " has been added to the directory!" << std::endl;
-	std::cout << company << " first floor: " << firstFloor << std::endl;
-	std::cout << company << " last floor: " << lastFloor << std::endl;
+	std::cout << company << "'s first floor: " << firstFloor << std::endl;
+	std::cout << company << "'s last floor: " << lastFloor << std::endl;
 }
 
 void PrintResource::guestAddition(std::string firstName, std::string lastName, int age)
 {
 	std::cout << firstName << " "<< lastName << ", Age: " << age << " has been added to the directory!" << std::endl;
+}
+
+void PrintResource::companyEmployeeAddition(std::string firstName, std::string lastName, std::string companyEmployer)
+{
+	std::cout << firstName << " " << lastName << ", Company: " << companyEmployer << " has been added to the directory!" << std::endl;
+
 }
 
 void PrintResource::buildingEmployeeAddition(std::string firstName, std::string lastName, std::string position)
