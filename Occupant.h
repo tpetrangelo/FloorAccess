@@ -7,16 +7,16 @@ public:
 	Occupant();
 
 	void setFirstName(std::string fName);
-	std::string getFirstName();
+	std::string getFirstName() const;
 
 	void setLastName(std::string lName);
-	std::string getLastName();
+	std::string getLastName() const;
 
 	void setOccupantStatus(std::string status);
-	std::string getOccupantStatus();
+	std::string getOccupantStatus() const;
 
-	virtual void printStatus();
-	virtual void printOccupantMenu();
+	virtual void printStatus() = 0;
+	virtual void printOccupantMenu() = 0;
 
 private:
 	std::string firstName;

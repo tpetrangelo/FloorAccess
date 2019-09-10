@@ -7,8 +7,8 @@ class Guest : virtual public Occupant
 public:
 	Guest(std::string fName, std::string lName, std::string status, int age);
 	Guest();
-	void setAge(int age);
-	int getAge();
+	void setAge(int age) ;
+	int getAge() const;
 	virtual void printStatus();
 	virtual void printOccupantMenu();
 

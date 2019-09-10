@@ -16,8 +16,10 @@ static std::vector<CompanyEmployee> newCompanyEmployee;
 static std::vector<BuildingEmployee> newBuildingEmployee;
 static int guestCount{ 0 };
 static int companyEmployeeCount{ 0 };
-static int buildingEmployeeCount{ 0 };
-
+static int buildingEmployeetCount{ 0 };
+static int& guestCountRef = guestCount;
+static int& companyEmployeetCountRef = companyEmployeeCount;
+static int& buildingEmployeetCountRef = buildingEmployeetCount;
 
 
 
@@ -114,8 +116,8 @@ void Menu::userMenu()
 					std::cout << std::endl;
 					//add a guest
 					if (input == 1) {
-						guestCount++;
-						newGuest.reserve(guestCount);
+						guestCountRef++;
+						newGuest.reserve(guestCountRef);
 
 					
 						std::cout << "Please enter your guest's first name: ";
@@ -159,8 +161,8 @@ void Menu::userMenu()
 					//add a company employee
 					if (input == 1) {
 						bool companyCheck = false;
-						companyEmployeeCount++;
-						newCompanyEmployee.reserve(companyEmployeeCount);
+						companyEmployeetCountRef++;
+						newCompanyEmployee.reserve(companyEmployeetCountRef);
 						std::cout << "Please enter your company employee's first name: ";
 						std::cin >> firstName;
 						std::cout << "Please enter your company employee's last name: ";
@@ -193,7 +195,7 @@ void Menu::userMenu()
 						}
 						else {
 							std::cout << firstName << " " << lastName << " could not be added, as " << companyEmployed << " is not in directory!" << std::endl;
-							companyEmployeeCount--;
+							companyEmployeetCountRef--;
 						}
 						continue;
 
@@ -226,8 +228,8 @@ void Menu::userMenu()
 					std::cout << std::endl;
 					//add a building employee
 					if (input == 1) {
-						buildingEmployeeCount++;
-						newBuildingEmployee.reserve(buildingEmployeeCount);
+						buildingEmployeetCountRef++;
+						newBuildingEmployee.reserve(buildingEmployeetCountRef);
 						std::cout << "Please enter the building employees's first name: ";
 						std::cin >> firstName;
 						std::cout << "Please enter your building employees's last name: ";
@@ -274,7 +276,7 @@ void Menu::userMenu()
 			}
 			//Print out number of Occupants, printed by class of occupant
 			else if (input == 2) {
-			printView.printOccupantNumber(guestCount, companyEmployeeCount, buildingEmployeeCount);
+			printView.printOccupantNumber(guestCountRef, companyEmployeetCountRef, buildingEmployeetCountRef);
 			continue;
 			}
 			//validation
@@ -295,4 +297,15 @@ void Menu::userMenu()
 
 		}
 	}
+}
+
+void Menu::printStatus()
+{
+	std::cout << "Placeholder" << std::endl;
+}
+
+void Menu::printOccupantMenu()
+{
+	std::cout << "Placeholder" << std::endl;
+
 }

@@ -17,7 +17,7 @@ void CompanyEmployee::setCompanyWorkedFor(std::string company)
 	companyEmployed = company;
 }
 
-std::string CompanyEmployee::getCompanyWorkedFor()
+std::string CompanyEmployee::getCompanyWorkedFor() const
 {
 	return companyEmployed;
 }

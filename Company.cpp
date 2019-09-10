@@ -15,7 +15,7 @@ void Company::setStartingFloor(int sFloor)
 	startingFloor = sFloor;
 }
 
-int Company::getStartingFloor()
+int Company::getStartingFloor() const
 {
 	return startingFloor;
 }
@@ -25,7 +25,7 @@ void Company::setEndingFloor(int eFloor)
 	endingFloor = eFloor;
 }
 
-int Company::getEndingFloor()
+int Company::getEndingFloor() const
 {
 	return endingFloor;
 }
@@ -35,7 +35,7 @@ void Company::setCompanyName(std::string cName)
 	companyName = cName;
 }
 
-std::string Company::getCompanyName()
+std::string Company::getCompanyName() const
 {
 	return companyName;
 }

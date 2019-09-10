@@ -8,13 +8,13 @@ public:
 	Company();
 
 	void setStartingFloor(int sFloor);
-	int getStartingFloor();
+	int getStartingFloor() const;
 
 	void setEndingFloor(int eFloor);
-	int getEndingFloor();
+	int getEndingFloor() const;
 
 	void setCompanyName(std::string cName);
-	std::string getCompanyName();
+	std::string getCompanyName() const;
 
 	void printCompanyInfo();
 

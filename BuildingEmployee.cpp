@@ -22,12 +22,12 @@ void BuildingEmployee::setPosition(std::string position)
 	buildingPosition = position;
 }
 
-std::string BuildingEmployee::getPosition()
+std::string BuildingEmployee::getPosition() const
 {
 	return buildingPosition;
 }
 
-void BuildingEmployee::printStatus()
+void BuildingEmployee::printStatus() 
 {
 	std::cout << "----------------------------------------" << std::endl;
 

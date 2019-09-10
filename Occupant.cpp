@@ -14,7 +14,7 @@ void Occupant::setFirstName(std::string fName)
 	firstName = fName;
 }
 
-std::string Occupant::getFirstName()
+std::string Occupant::getFirstName() const
 {
 	return firstName;
 }
@@ -24,7 +24,7 @@ void Occupant::setLastName(std::string lName)
 	lastName = lName;
 }
 
-std::string Occupant::getLastName()
+std::string Occupant::getLastName() const
 {
 	return lastName;
 }
@@ -34,16 +34,10 @@ void Occupant::setOccupantStatus(std::string status)
 	occupantStatus = status;
 }
 
-std::string Occupant::getOccupantStatus()
+std::string Occupant::getOccupantStatus() const
 {
 	return occupantStatus;
 }
 
-void Occupant::printStatus()
-{
-}
 
-void Occupant::printOccupantMenu()
-{
-}
 

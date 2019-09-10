@@ -9,6 +9,7 @@ Guest::Guest(std::string fName, std::string lName, std::string status, int age) 
 
 Guest::Guest()
 {
+
 }
 
 void Guest::setAge(int age)
@@ -16,7 +17,7 @@ void Guest::setAge(int age)
 	age = guestAge;
 }
 
-int Guest::getAge()
+int Guest::getAge() const
 {
 	return guestAge;
 }
