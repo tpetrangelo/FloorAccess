@@ -1,6 +1,6 @@
 #include "Occupant.h"
 
-Occupant::Occupant(std::string fName, std::string lName, std::string status) : firstName{fName} , lastName{lName} , occupantStatus{status}
+Occupant::Occupant(std::string fName, std::string lName) : firstName{fName} , lastName{lName}
 {
 
 }

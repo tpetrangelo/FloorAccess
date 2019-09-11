@@ -7,7 +7,6 @@
 #include "Company.h"
 #include "CompanyEmployee.h"
 #include "Guest.h"
-#include "Occupant.h"
 #include "PrintResource.h"
 
 static std::vector<Company> newCompany;
@@ -127,7 +126,7 @@ void Menu::userMenu()
 						std::cout << "Please enter your guest's age: ";
 						std::cin >> age;
 						std::cout << std::endl;
-						newGuest.push_back(Guest(firstName, lastName, "Guest", age));
+						newGuest.push_back(Guest(firstName, lastName, age));
 						printView.guestAddition(firstName, lastName, age);
 						continue;
 					}
@@ -190,7 +189,7 @@ void Menu::userMenu()
 						}
 
 						if (companyCheck) {
-							newCompanyEmployee.push_back(CompanyEmployee(firstName, lastName, "Company Employee", companyEmployed));
+							newCompanyEmployee.push_back(CompanyEmployee(firstName, lastName, companyEmployed));
 							printView.companyEmployeeAddition(firstName, lastName, companyEmployed);
 						}
 						else {
@@ -238,7 +237,7 @@ void Menu::userMenu()
 						std::cin >> id;
 						std::cout << "Please enter your building employees's position: ";
 						std::cin >> position;
-						newBuildingEmployee.push_back(BuildingEmployee(firstName, lastName,"Building Employee", id, position));
+						newBuildingEmployee.push_back(BuildingEmployee(firstName, lastName, position));
 						printView.buildingEmployeeAddition(firstName,lastName,position);
 						std::cout << std::endl;
 						continue;
