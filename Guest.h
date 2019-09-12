@@ -29,6 +29,7 @@ public:
 	//Prints out menu options based on a specfific Guest object
 	virtual void printOccupantMenu();
 
+
 private:
 
 	//Private data members that represents a Guest's first name, last name, and their age

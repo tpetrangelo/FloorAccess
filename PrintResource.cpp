@@ -89,6 +89,24 @@ void PrintResource::printOccupantNumber(int guestCount, int companyEmployeeCount
 	std::cout << std::endl;
 }
 
+//Overloaded function that will print out distinguishing identifier for a guest (age)
+int PrintResource::printIdentifier(Guest guestOverload)
+{
+	return guestOverload.getAge();
+}
+
+//Overloaded function that will print out distinguishing identifier for a building employee (job title)
+std::string PrintResource::printIdentifier(BuildingEmployee buildingEmployeeOverload)
+{
+	return buildingEmployeeOverload.getPosition();
+}
+
+//Overloaded function that will print out distinguishing identifier for a company employee (company worked for)
+std::string PrintResource::printIdentifier(CompanyEmployee companyEmployeeOverload)
+{
+	return companyEmployeeOverload.getCompanyWorkedFor();
+}
+
 
 
 

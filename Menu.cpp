@@ -50,7 +50,7 @@ void Menu::userStartMenu()
 	Building building(numberOfFloors);
 
 	//Resizes numberOfFloorsLeft vector based on user input 
-	Building::numberOfFloorsLeft.reserve(numberOfFloors);
+	Building::numberOfFloorsLeft.resize(numberOfFloors);
 
 	//Check this
 	//Building::numberOfFloorsLeft[0] = 0;
@@ -189,8 +189,8 @@ void Menu::userMenu()
 						//Adds guest to directory
 						newGuest.push_back(Guest(firstName, lastName, age));
 
-						//Output confirming the new guest has been added to teh directory
-						printView.guestAddition(firstName, lastName, age);
+						//Output confirming the new guest has been added to the directory, uses overloaded printIdentifier function that takes in an object
+						printView.guestAddition(firstName, lastName, printView.printIdentifier(newGuest.back()));
 
 						//Bring user back to the Building menu
 						continue;
@@ -261,7 +261,7 @@ void Menu::userMenu()
 
 						if (companyCheck) {
 							newCompanyEmployee.push_back(CompanyEmployee(firstName, lastName, companyEmployed));
-							printView.companyEmployeeAddition(firstName, lastName, companyEmployed);
+							printView.companyEmployeeAddition(firstName, lastName, printView.printIdentifier(newCompanyEmployee.back()));
 						}
 						else {
 							std::cout << firstName << " " << lastName << " could not be added, as " << companyEmployed << " is not in directory!" << std::endl;
@@ -304,12 +304,10 @@ void Menu::userMenu()
 						std::cin >> firstName;
 						std::cout << "Please enter your building employees's last name: ";
 						std::cin >> lastName;
-						std::cout << "Please enter your building employees's ID Number: ";
-						std::cin >> id;
 						std::cout << "Please enter your building employees's position: ";
 						std::cin >> position;
 						newBuildingEmployee.push_back(BuildingEmployee(firstName, lastName, position));
-						printView.buildingEmployeeAddition(firstName,lastName,position);
+						printView.buildingEmployeeAddition(firstName,lastName,printView.printIdentifier(newBuildingEmployee.back()));
 						std::cout << std::endl;
 						continue;
 					}

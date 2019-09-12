@@ -28,7 +28,6 @@ void Building::openFloorsLeft()
 {
 	
 	std::cout << "Floors open for occupation: ";
-	
 	//for floor 2 to the size of the numberOfFloorsLeft, if an element is equal to 0, then it is a open floor, print out that floor number
 	for (size_t i = 1; i < numberOfFloorsLeft.size(); i++) {
 		if (numberOfFloorsLeft[i] == 0) {

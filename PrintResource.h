@@ -1,6 +1,9 @@
 //Pre-processor directives
 #pragma once
 #include <string>
+#include "Guest.h"
+#include "BuildingEmployee.h"
+#include "CompanyEmployee.h"
 
 //Interface for class PrintResource
 class PrintResource
@@ -39,5 +42,9 @@ public:
 	
 	//Outputs the number of occupants, separated by type	
 	void printOccupantNumber(int guestCount, int companyEmployeeCount, int buildingEmployeeCount);
+
+	int printIdentifier(Guest guestOverload);
+	std::string printIdentifier(BuildingEmployee buildingEmployeeOverload);
+	std::string printIdentifier(CompanyEmployee companyEmployeeOverload);
 };
 
