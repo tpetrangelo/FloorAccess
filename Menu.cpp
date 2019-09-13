@@ -294,10 +294,12 @@ void Menu::userMenu()
 
 						//If companies do exist in the directory, print out all of the options for a Company Employee to pick from
 						else {
+
 							std::cout << "Company Directory" << std::endl;
 							for (auto& company : newCompany) {
 								company.printCompanyInfo();
 							}
+
 						}
 
 

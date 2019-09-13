@@ -12,14 +12,16 @@
 int main() {
 
 	//Creation of Menu object
-	//Menu is the main output of this program
+	//Menu is the main output of this program, ran through the pointer buildingMenuPtr
 	Menu buildingMenu;	
 
-	//userStartMenu asks user to input a number that represents the number of floors in a building
-	buildingMenu.userStartMenu();
+	Menu* buildingMenuPtr = &buildingMenu;
 
-	//userMenu is the main driver for user-input operations
-	buildingMenu.userMenu();
+	//userStartMenu asks user to input a number that represents the number of floors in a building
+	buildingMenuPtr->userStartMenu();
+
+	//userMenu is the main driver for user-input operations, ran through the pointer buildingMenuPtr
+	buildingMenuPtr->userMenu();
 
 return 0;
 }
