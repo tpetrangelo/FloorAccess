@@ -56,8 +56,6 @@ void Menu::userStartMenu()
 	//Resizes numberOfFloorsLeft vector based on user input 
 	Building::numberOfFloorsLeft.resize(numberOfFloors);
 
-	//Check this
-	//Building::numberOfFloorsLeft[0] = 0;
 }
 
 
