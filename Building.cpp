@@ -6,6 +6,7 @@
 std::vector<int> Building::numberOfFloorsLeft;
 
 
+
 //Building constructor
 Building::Building(int numFloors) : numberOfFloors{numFloors}
 {
@@ -37,18 +38,39 @@ void Building::openFloorsLeft()
 	std::cout << std::endl;
 }
 
+//Checks to ensure user can add a new company to the directory
+//Iterates through numberOfFloorsLeft to find any empty elements
+//If there are "zero" filled elements, user can add at least one company
+//Else, directory is full
+bool Building::canAddCompany()
+{
+	for (size_t i = 1; i < numberOfFloorsLeft.size(); i++) {
+		if (numberOfFloorsLeft[i] == 0) {
+			return true;
+			break;
+		}
+	}
+	return false;
+}
+
 //checks to make sure user input floors for their company is valid, takes in a starting and ending floor
 bool Building::validateCompanyFloors(int startFloor, int endFloor)
 {
 	//floorErase initializes as startFloor that is passed in
 	int floorErase = startFloor;
 
+	//If the last floor from the user-input is greater than the size of the building, output an error
+	if (endFloor > numberOfFloorsLeft.size()) {
+		std::cout << "Last floor cannot be greater than the top floor of the building!" << std::endl << std::endl;
+		return false;
+	}
+
 	//If the last floor of a new company is less than its starting floor, output error message and return false
 	if (endFloor < startFloor) {
 		std::cout << "First floor cannot be greater than last floor of company!" << std::endl;
 		return false;
 	}
-	//Iterate through vector numberOfFloors left and check if any of the floors input by the user is already occupied
+	//Iterate through vector numberOfFloors left and check if any of the floors input by the user are already occupied
 	for (startFloor; startFloor <= endFloor; startFloor++) {
 		if (numberOfFloorsLeft.at(startFloor-1) != 0) {
 			std::cout << "Floor " << startFloor << " is already occupied!";

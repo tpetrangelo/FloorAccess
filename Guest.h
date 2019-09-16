@@ -36,5 +36,7 @@ private:
 	std::string firstName;
 	std::string lastName;
 	int guestAge;
+	Occupant occupantBase;
+
 };
 

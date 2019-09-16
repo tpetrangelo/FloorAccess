@@ -41,9 +41,7 @@ void BuildingEmployee::printStatus()
 	std::cout << "----------------------------------------" << std::endl;
 
 	//prints out the first and last name, along with the BuildingEmployee's job title
-	std::cout << "First Name: " << getFirstName() << std::endl
-		<< "Last Name: " << getLastName() << std::endl
-		<< "Position: " << getPosition() << std::endl;
+	std::cout << "First Name: " << getFirstName() << ", " << getLastName() << " Position: " << getPosition() << std::endl;
 
 	std::cout << "----------------------------------------" << std::endl;
 

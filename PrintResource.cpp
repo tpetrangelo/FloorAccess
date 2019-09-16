@@ -53,20 +53,20 @@ void PrintResource::companyAddition(std::string company, int firstFloor, int las
 //Output when a new guest has been added to the directory
 void PrintResource::guestAddition(std::string firstName, std::string lastName, int age)
 {
-	std::cout << firstName << " "<< lastName << ", Age: " << age << " has been added to the directory!" << std::endl;
+	std::cout << firstName << " "<< lastName << ", Age: " << age << " has been added to the directory!" << std::endl << std::endl;
 }
 
 //Output when a new company employee has been added to the directory
 void PrintResource::companyEmployeeAddition(std::string firstName, std::string lastName, std::string companyEmployer)
 {
-	std::cout << firstName << " " << lastName << ", Company: " << companyEmployer << " has been added to the directory!" << std::endl;
+	std::cout << firstName << " " << lastName << ", Company: " << companyEmployer << " has been added to the directory!" << std::endl << std::endl;
 
 }
 
 //Output when a new building employee has been added to the directory
 void PrintResource::buildingEmployeeAddition(std::string firstName, std::string lastName, std::string position)
 {
-	std::cout << firstName << " " << lastName << ", Position: " << position << ", has been added to the directory!" << std::endl;
+	std::cout << firstName << " " << lastName << ", Position: " << position << ", has been added to the directory!" << std::endl << std::endl;
 
 }
 

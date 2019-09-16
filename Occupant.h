@@ -1,7 +1,7 @@
 //Pre-processor directives
 #pragma once
 #include <string>
-
+#include <iostream>
 //Interface for class Occupant (Base Class)
 class Occupant 
 {
@@ -29,9 +29,10 @@ public:
 	//Returns the last name of the Occupant object
 	std::string getLastName() const;
 
-	//Pure virtual functions used for derived classes
-	virtual void printStatus() = 0;
-	virtual void printOccupantMenu() = 0;
+	//virtual functions used for derived classes
+	virtual void printStatus();
+	
+
 
 private:
 

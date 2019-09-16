@@ -40,10 +40,8 @@ std::string CompanyEmployee::getCompanyWorkedFor() const
 void CompanyEmployee::printStatus()
 {
 	std::cout << "----------------------------------------" << std::endl;
-
-	std::cout << "First Name: " << getFirstName() << std::endl
-		<< "Last Name: " << getLastName() << std::endl
-		<< "Company Employed At: " << getCompanyWorkedFor() << std::endl;
+		
+	std::cout << "First Name: " << getFirstName() << ", " << getLastName() << " Company Employed At: " << getCompanyWorkedFor() << std::endl;
 
 	std::cout << "----------------------------------------" << std::endl;
 }

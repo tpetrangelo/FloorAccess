@@ -6,6 +6,7 @@
 #include "CompanyEmployee.h"
 #include "Guest.h"
 #include "PrintResource.h"
+#include "Occupant.h"
 
 //Interface for Menu class
 class Menu
@@ -24,8 +25,9 @@ private:
 	Building building;
 	Guest guest;
 	PrintResource printView;
+	PrintResource& printViewRef{ printView };
 	CompanyEmployee compEmployee;
-	BuildingEmployee buildEmpyloyee;
+	BuildingEmployee buildEmployee;
 	Company company;
 	
 	//Initialization of integer variables that are private data members of the above composition objects

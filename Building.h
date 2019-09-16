@@ -23,6 +23,10 @@ public:
 	
 	//Returns a string that states the number of floors open for a Company to choose from
 	void openFloorsLeft();
+
+	//Checks to ensure user can add another company to the directory
+	bool canAddCompany();
+
 	
 	//Checks to ensure a user inputs a valid selection of floors for their new Company
 	bool validateCompanyFloors(int startFloor, int endFloor);
@@ -31,9 +35,5 @@ private:
 
 	//Int variable containing the number of floors in a building
 	int numberOfFloors{ 0 };
-
-	//A const int containing the maximum number of companies, each company must be at least one floor, we use
-	//numberOfFloors - 1 because the lobby (floor 1) cannot be occupied by a company
-	const int maxNumberOfCompanies{ numberOfFloors - 1 };
 };
 

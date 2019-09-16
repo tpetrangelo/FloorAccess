@@ -9,6 +9,8 @@
 #include "CompanyEmployee.h"
 #include "Guest.h"
 #include "PrintResource.h"
+#include "Occupant.h"
+
 
 //Initialization of static vectors for each type of resizable object
 static std::vector<Company> newCompany;
@@ -31,7 +33,7 @@ static int& buildingEmployeeCountRef = buildingEmployeetCount;
 void Menu::userStartMenu()
 {
 	//Outputs start menu, askes user to input the number of floors in a building
-	printView.runStartMenu();
+	printViewRef.runStartMenu();
 
 	//Input for menu
 	std::cin >> numberOfFloors;
@@ -66,7 +68,7 @@ void Menu::userMenu()
 		//Outputs initial options for user
 		//Input 1 will bring user to company menu
 		//Input 2 will bring user to occupant menu
-		printView.printBuildingStatus();
+		printViewRef.printBuildingStatus();
 
 		//Input for menu
 		std:: cin >> input; 
@@ -76,7 +78,7 @@ void Menu::userMenu()
 		if (input == 1) {
 
 			//Outputs options for user based on company menu
-			printView.printCompanyStatus();
+			printViewRef.printCompanyStatus();
 
 			//Input for menu
 			std:: cin >> input;
@@ -85,11 +87,18 @@ void Menu::userMenu()
 			//Company Menu Input 1: Add a company to the directory
 			if (input == 1) {
 
+				//Checks to see if user can add a new company
+				if (building.canAddCompany() == false) {
+					std::cout << "The directory is full! No more companies can be added" << std::endl << std::endl;
+					continue;
+				}
+				
+
 				//Increments the company counter
 				companyCount++;
 
 				//Asks user to input company name
-				printView.newCompanyName();
+				printViewRef.newCompanyName();
 
 				//Input for menu
 				std::cin >> companyName;
@@ -113,7 +122,7 @@ void Menu::userMenu()
 					newCompany.push_back(Company(companyName, firstFloor, lastFloor));
 
 					//Output confirming company has been added to directory
-					printView.companyAddition(companyName, firstFloor, lastFloor);
+					printViewRef.companyAddition(companyName, firstFloor, lastFloor);
 					std::cout << std::endl;
 				}
 				else {
@@ -158,7 +167,7 @@ void Menu::userMenu()
 		else if (input == 2) {
 
 			//Print out options for user in Occupant menu
-			printView.printOccupantStatus();
+			printViewRef.printOccupantStatus();
 
 			//Input for menu
 			std:: cin >> input; 
@@ -169,7 +178,7 @@ void Menu::userMenu()
 			if (input == 1) {
 
 				//Output options for user based on Occupant Menu
-				printView.printOccupantOptions();
+				printViewRef.printOccupantOptions();
 
 				//Input for menu
 				std:: cin >> input; 
@@ -214,7 +223,7 @@ void Menu::userMenu()
 						newGuest.push_back(Guest(firstName, lastName, age));
 
 						//Output confirming the new guest has been added to the directory, uses overloaded printIdentifier function that takes in an object
-						printView.guestAddition(firstName, lastName, printView.printIdentifier(newGuest.back()));
+						printViewRef.guestAddition(firstName, lastName, printViewRef.printIdentifier(newGuest.back()));
 
 						//Bring user back to the Building menu
 						continue;
@@ -317,7 +326,7 @@ void Menu::userMenu()
 						//If user input a valid company, then add them into the directory
 						if (companyCheck==true) {
 							newCompanyEmployee.push_back(CompanyEmployee(firstName, lastName, companyEmployed));
-							printView.companyEmployeeAddition(firstName, lastName, printView.printIdentifier(newCompanyEmployee.back()));
+							printViewRef.companyEmployeeAddition(firstName, lastName, printViewRef.printIdentifier(newCompanyEmployee.back()));
 						}
 
 						//Output message if company employee could not be added to the directory
@@ -359,7 +368,7 @@ void Menu::userMenu()
 				else if (input == 3) {
 
 					//Print out possible options for user based on Company Employee object
-					buildEmpyloyee.printOccupantMenu();
+					buildEmployee.printOccupantMenu();
 
 					//Input for menu
 					std:: cin >> input; 
@@ -394,7 +403,7 @@ void Menu::userMenu()
 
 						//Print confirmation that the new Building Employee has been added to the directory, uses overloaded "printIdentifier"
 						//function by passing in type Building Employee
-						printView.buildingEmployeeAddition(firstName,lastName,printView.printIdentifier(newBuildingEmployee.back()));
+						printViewRef.buildingEmployeeAddition(firstName,lastName,printViewRef.printIdentifier(newBuildingEmployee.back()));
 						std::cout << std::endl;
 						continue;
 					}
@@ -438,10 +447,10 @@ void Menu::userMenu()
 			else if (input == 2) {
 
 			//Prints out counter for each type of Occupant
-			printView.printOccupantNumber(guestCountRef, companyEmployeeCountRef, buildingEmployeeCountRef);
+			printViewRef.printOccupantNumber(guestCountRef, companyEmployeeCountRef, buildingEmployeeCountRef);
 			continue;
 			}
-			
+
 			//Occupant Main Menu: If 1 or 2 was not entered, output error message and have user re-input
 			else {
 				while (input != 1 && input != 2) {
@@ -463,3 +472,4 @@ void Menu::userMenu()
 		}
 	}
 }
+
