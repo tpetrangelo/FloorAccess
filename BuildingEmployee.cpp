@@ -43,7 +43,7 @@ void BuildingEmployee::printStatus()
 	//prints out the first and last name, along with the BuildingEmployee's job title
 	std::cout << "First Name: " << getFirstName() << ", " << getLastName() << " Position: " << getPosition() << std::endl;
 
-	std::cout << "----------------------------------------" << std::endl;
+	std::cout << "----------------------------------------" << std::endl << std::endl;
 
 }
 
@@ -51,7 +51,7 @@ void BuildingEmployee::printStatus()
 void BuildingEmployee::printOccupantMenu()
 {
 	std::cout << "Building Employee Access Menu" << std::endl << "--------------------" << std::endl
-		<< "[1] - Add a Building Employee" << std::endl << "[2] - View all current Building Employees" << std::endl
+		<< "[1] - Add a Building Employee" << std::endl << "[2] - Main Menu" << std::endl
 		<< "Building Employee Menu Choice: ";
 }
 

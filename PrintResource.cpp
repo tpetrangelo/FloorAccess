@@ -25,6 +25,7 @@ void PrintResource::printOccupantStatus()
 {
 	std::cout << "Occupant Access Menu" << std::endl << "--------------------" << std::endl
 		<< "[1] - Occupant Options" << std::endl << "[2] - View current number of occupants" << std::endl
+		<< "[3] - View All Current Occupants" << std::endl
 		<< "Occupant Menu Choice: ";
 }
 
@@ -51,24 +52,18 @@ void PrintResource::companyAddition(std::string company, int firstFloor, int las
 }
 
 //Output when a new guest has been added to the directory
-void PrintResource::guestAddition(std::string firstName, std::string lastName, int age)
+void PrintResource::Addition(std::string firstName, std::string lastName, int age)
 {
 	std::cout << firstName << " "<< lastName << ", Age: " << age << " has been added to the directory!" << std::endl << std::endl;
 }
 
-//Output when a new company employee has been added to the directory
-void PrintResource::companyEmployeeAddition(std::string firstName, std::string lastName, std::string companyEmployer)
+//Output when a new company or building employee has been added to the directory
+void PrintResource::Addition(std::string firstName, std::string lastName, std::string identifer)
 {
-	std::cout << firstName << " " << lastName << ", Company: " << companyEmployer << " has been added to the directory!" << std::endl << std::endl;
+	std::cout << firstName << " " << lastName << ", " << identifer << " has been added to the directory!" << std::endl << std::endl;
 
 }
 
-//Output when a new building employee has been added to the directory
-void PrintResource::buildingEmployeeAddition(std::string firstName, std::string lastName, std::string position)
-{
-	std::cout << firstName << " " << lastName << ", Position: " << position << ", has been added to the directory!" << std::endl << std::endl;
-
-}
 
 //Ouput for options for an occupant
 void PrintResource::printOccupantOptions()

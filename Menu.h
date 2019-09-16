@@ -19,6 +19,8 @@ public:
 	//userMenu is the main driver for the program, allowing the user to fill a bulding's directory with companies and occupants
 	void userMenu();
 
+	void utilityPrint(Occupant*  baseClassPtr);
+
 private:
 
 	//Composition creating objects that will interract with each other inside of Menu.cpp

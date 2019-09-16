@@ -30,7 +30,7 @@ public:
 	std::string getLastName() const;
 
 	//virtual functions used for derived classes
-	virtual void printStatus();
+	virtual void printStatus() = 0;
 	
 
 

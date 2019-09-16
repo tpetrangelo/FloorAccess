@@ -43,12 +43,6 @@ std::string Occupant::getLastName() const
 }
 
 
-//Outputs occupant's first and last name
-void Occupant::printStatus()
-{
-	std::cout << "First Name: " << getFirstName() << " Last Name: " << getLastName() << std::endl;
-}
-
 
 
 

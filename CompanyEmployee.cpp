@@ -43,14 +43,14 @@ void CompanyEmployee::printStatus()
 		
 	std::cout << "First Name: " << getFirstName() << ", " << getLastName() << " Company Employed At: " << getCompanyWorkedFor() << std::endl;
 
-	std::cout << "----------------------------------------" << std::endl;
+	std::cout << "----------------------------------------" << std::endl << std::endl;
 }
 
 //Prints out menu options based on a specfific BuildingEmployee object
 void CompanyEmployee::printOccupantMenu()
 {
 	std::cout << "Company Employee Access Menu" << std::endl << "--------------------" << std::endl
-		<< "[1] - Add a Company Employee" << std::endl << "[2] - View all current Company Employees" << std::endl
+		<< "[1] - Add a Company Employee" << std::endl << "[2] - Main Menu" << std::endl
 		<< "Company Employee Menu Choice: ";
 
 }

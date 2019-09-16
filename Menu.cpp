@@ -17,17 +17,17 @@ static std::vector<Company> newCompany;
 static std::vector<Guest> newGuest;
 static std::vector<CompanyEmployee> newCompanyEmployee;
 static std::vector<BuildingEmployee> newBuildingEmployee;
-
+static std::vector<Occupant*> derivedOccupantHolder;
 //Static counters for resizable occupants, used for printing out number of occupants in a building
 static int guestCount{ 0 };
 static int companyEmployeeCount{ 0 };
 static int buildingEmployeetCount{ 0 };
-
+static int occupantCount{ 0 };
 //Reference variables used for adding to occupant counters
 static int& guestCountRef = guestCount;
 static int& companyEmployeeCountRef = companyEmployeeCount;
 static int& buildingEmployeeCountRef = buildingEmployeetCount;
-
+static int& occupantCountRef = occupantCount;
 
 
 void Menu::userStartMenu()
@@ -200,9 +200,10 @@ void Menu::userMenu()
 
 						//Add to guest counter
 						guestCountRef++;
+						occupantCountRef++;
 
 						//Create space on newGuest vector for an addtional Guest
-						newGuest.reserve(guestCountRef);
+						derivedOccupantHolder.reserve(occupantCountRef);
 
 						//Asks user to input details about the new guest
 						std::cout << "Please enter your guest's first name: ";
@@ -220,30 +221,16 @@ void Menu::userMenu()
 						std::cout << std::endl;
 
 						//Adds guest to directory
-						newGuest.push_back(Guest(firstName, lastName, age));
+						derivedOccupantHolder.push_back(new Guest(firstName, lastName, age));
 
 						//Output confirming the new guest has been added to the directory, uses overloaded printIdentifier function that takes in an object
-						printViewRef.guestAddition(firstName, lastName, printViewRef.printIdentifier(newGuest.back()));
+						printViewRef.Addition(firstName, lastName, age);
 
 						//Bring user back to the Building menu
 						continue;
 					}
 					//Guest Menu Input 2: View all guests in directory
 					else if (input == 2) {
-
-						//If there are no current guests, let user know
-						if (newGuest.empty() == true) {
-							std::cout << "There are no guests in the directory!" << std::endl << std::endl;
-						}
-
-						//Output all guest information using range based for loop
-						else {
-							std::cout << "Guest Directory" << std::endl;
-							for (auto& guests : newGuest) {
-								guests.printStatus();
-							}
-						}
-
 						//Bring user back to the Building menu
 						continue;
 					}
@@ -276,9 +263,10 @@ void Menu::userMenu()
 
 						//Increments number of Company Employees
 						companyEmployeeCountRef++;
+						occupantCountRef++;
 
 						//Creates space on the newCompany vector for a new Company Employee
-						newCompanyEmployee.reserve(companyEmployeeCountRef);
+						newCompanyEmployee.reserve(occupantCountRef);
 						std::cout << "Please enter your company employee's first name: ";
 
 						//Input for menu
@@ -325,8 +313,8 @@ void Menu::userMenu()
 
 						//If user input a valid company, then add them into the directory
 						if (companyCheck==true) {
-							newCompanyEmployee.push_back(CompanyEmployee(firstName, lastName, companyEmployed));
-							printViewRef.companyEmployeeAddition(firstName, lastName, printViewRef.printIdentifier(newCompanyEmployee.back()));
+							derivedOccupantHolder.push_back( new CompanyEmployee(firstName, lastName, companyEmployed));
+							printViewRef.Addition(firstName, lastName, companyEmployed);
 						}
 
 						//Output message if company employee could not be added to the directory
@@ -335,25 +323,14 @@ void Menu::userMenu()
 
 							//Company Employee could not be added, decrement from counter
 							companyEmployeeCountRef--;
+							occupantCountRef--;
 						}
 						continue;
 
 					}
 					//Company Employee Menu Input 2: View all Company Employees
 					else if (input == 2) {
-
-						//If there are no Company Employees, then output message letting user know
-						if (newCompanyEmployee.empty() == true) {
-							std::cout << "There are no company employees in the directory!" << std::endl << std::endl;
-						}
-						else {
-
-							//Print out first and last name, along with company they work for
-							for (auto& compEmp : newCompanyEmployee) {
-								compEmp.printStatus();
-							}
-						
-						}
+						//Bring user back to the Building menu
 						continue;
 					}
 					//Company Employee Menu: If 1 or 2 was not entered, output error message and have user re-input
@@ -380,9 +357,9 @@ void Menu::userMenu()
 
 						//Increment counter for number of Building Employees
 						buildingEmployeeCountRef++;
-
+						occupantCountRef++;
 						//Reserve space on newBuildingEmployee vector for a new Building Employee
-						newBuildingEmployee.reserve(buildingEmployeeCountRef);
+						newBuildingEmployee.reserve(occupantCountRef);
 
 
 						std::cout << "Please enter the building employees's first name: ";
@@ -399,29 +376,18 @@ void Menu::userMenu()
 						std::cin >> position;
 
 						//Add employee to newBuildingEmployee vector
-						newBuildingEmployee.push_back(BuildingEmployee(firstName, lastName, position));
+						derivedOccupantHolder.push_back(new BuildingEmployee(firstName, lastName, position));
 
 						//Print confirmation that the new Building Employee has been added to the directory, uses overloaded "printIdentifier"
 						//function by passing in type Building Employee
-						printViewRef.buildingEmployeeAddition(firstName,lastName,printViewRef.printIdentifier(newBuildingEmployee.back()));
 						std::cout << std::endl;
+						printViewRef.Addition(firstName,lastName,position);
 						continue;
 					}
 					//Building Employee Menu Input 2: View all Building Employees
 					else if (input == 2) {
 
-						//Output if there are no current Building Employees
-						if (newBuildingEmployee.empty() == true) {
-							std::cout << "There are no building employees in the directory!" << std::endl << std::endl;
-						}
-						
-						//Use range based for loop to print out all Building Employees
-						else {
-							std::cout << "Building Employee Directory" << std::endl;
-							for (auto& buildEmp : newBuildingEmployee) {
-								buildEmp.printStatus();
-							}
-						}
+						//Bring user back to the Building menu
 						continue;
 					}
 					//Building Employee Menu: If 1 or 2 was not entered, output error message and have user re-input
@@ -451,6 +417,18 @@ void Menu::userMenu()
 			continue;
 			}
 
+			else if (input == 3) {
+			if (derivedOccupantHolder.empty() == true) {
+				std::cout << "There are no occupants currently!" << std::endl << std::endl;
+				continue;
+				}
+				std::cout << "All Occupants of the Building" << std::endl;
+				for (Occupant* occupantPtr : derivedOccupantHolder) {
+					utilityPrint(occupantPtr);
+				}
+				continue;
+			}
+
 			//Occupant Main Menu: If 1 or 2 was not entered, output error message and have user re-input
 			else {
 				while (input != 1 && input != 2) {
@@ -465,11 +443,16 @@ void Menu::userMenu()
 		//Building Menu: If 1 or 2 was not entered, output error message and have user re-input
 		else {
 			while (input != 1 && input != 2) {
-				std::cout << "Invalid Input. Please re-enter\n ";
+				std::cout << "Invalid Input. Please re-enter\n\n ";
 				break;
 			}
 
 		}
 	}
+}
+
+void Menu::utilityPrint(Occupant*  baseClassPtr)
+{
+	baseClassPtr->printStatus();
 }
 

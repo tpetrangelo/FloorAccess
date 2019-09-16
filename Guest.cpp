@@ -42,7 +42,7 @@ void Guest::printStatus()
 
 	std::cout << "First Name: " << getFirstName() << ", " << getLastName() << " Age: " << getAge() << std::endl;
 
-	std::cout << "----------------------------------------" << std::endl;
+	std::cout << "----------------------------------------" << std::endl << std::endl;
 
 }
 
@@ -50,7 +50,7 @@ void Guest::printStatus()
 void Guest::printOccupantMenu()
 {
 	std::cout << "Guest Access Menu" << std::endl << "--------------------" << std::endl
-		<< "[1] - Add a Guest" << std::endl << "[2] - View all current Guests" << std::endl
+		<< "[1] - Add a Guest" << std::endl << "[2] - Main Menu" << std::endl
 		<< "Guest Menu Choice: ";
 }
 
