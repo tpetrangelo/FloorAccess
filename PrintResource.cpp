@@ -1,3 +1,10 @@
+//////////////////////////
+// Tom Petrangelo 
+// CIS 554 - OOP in C++ Final Project
+// Building and Floor Access
+// Due Date: 9/17/19
+//////////////////////////
+
 //Pre-processor directives
 #include "PrintResource.h"
 #include "Company.h"

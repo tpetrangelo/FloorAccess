@@ -1,3 +1,10 @@
+//////////////////////////
+// Tom Petrangelo 
+// CIS 554 - OOP in C++ Final Project
+// Building and Floor Access
+// Due Date: 9/17/19
+//////////////////////////
+
 //Pre-processor directives
 #include <iostream>
 #include <vector>
@@ -13,26 +20,25 @@
 
 
 //Initialization of static vectors for each type of resizable object
+//derivedOccupantHolder is the base class for derived classes of Occupants
 static std::vector<Company> newCompany;
-static std::vector<Guest> newGuest;
-static std::vector<CompanyEmployee> newCompanyEmployee;
-static std::vector<BuildingEmployee> newBuildingEmployee;
 static std::vector<Occupant*> derivedOccupantHolder;
+
 //Static counters for resizable occupants, used for printing out number of occupants in a building
 static int guestCount{ 0 };
 static int companyEmployeeCount{ 0 };
 static int buildingEmployeetCount{ 0 };
 static int occupantCount{ 0 };
+
 //Reference variables used for adding to occupant counters
 static int& guestCountRef = guestCount;
 static int& companyEmployeeCountRef = companyEmployeeCount;
 static int& buildingEmployeeCountRef = buildingEmployeetCount;
 static int& occupantCountRef = occupantCount;
 
-
 void Menu::userStartMenu()
 {
-	//Outputs start menu, askes user to input the number of floors in a building
+	//Outputs start menu, asks user to input the number of floors in a building
 	printViewRef.runStartMenu();
 
 	//Input for menu
@@ -40,8 +46,9 @@ void Menu::userStartMenu()
 	std::cout << std::endl;
 
 	//Checks if user-input is less than 0 or equal to 1. Outputs and error message if so
-	while (numberOfFloors == 1 || numberOfFloors < 0) {
-		
+	while (numberOfFloors == 1 || numberOfFloors < 0 || std::cin.fail()) {
+		std::cin.clear();
+		std::cin.ignore();
 		std::cout << "There must be a postive number of floors, greater than one , please re-enter: ";
 
 		//Input for menu
@@ -49,8 +56,8 @@ void Menu::userStartMenu()
 		std::cout << std::endl;
 	}
 	
-	//Creates room for numberOfFloors-1 companies
-	newCompany.reserve(numberOfFloors-1);
+	//Creates room for numberOfFloors-1 companies, cast to long type to avoid arithmetic overflow
+	newCompany.reserve((long)numberOfFloors-1);
 
 	//Creates a Building obejct with the number of floors based on user input
 	Building building(numberOfFloors);
@@ -59,7 +66,6 @@ void Menu::userStartMenu()
 	Building::numberOfFloorsLeft.resize(numberOfFloors);
 
 }
-
 
 void Menu::userMenu()
 {
@@ -70,8 +76,16 @@ void Menu::userMenu()
 		//Input 2 will bring user to occupant menu
 		printViewRef.printBuildingStatus();
 
-		//Input for menu
+		//Input for Building menu
 		std:: cin >> input; 
+
+		//Input Validation
+		while (std::cin.fail()) {
+			std::cin.clear();
+			std::cin.ignore(80, '\n');
+			std::cout << std::endl << "Invalid input, please re-enter: ";
+			std::cin >> input;
+		}
 		std::cout << std::endl;
 
 		//Main Menu Input 1: Brings user to company menu
@@ -82,6 +96,14 @@ void Menu::userMenu()
 
 			//Input for menu
 			std:: cin >> input;
+
+			//Input Validation
+			while (std::cin.fail()) {
+				std::cin.clear();
+				std::cin.ignore(80, '\n');
+				std::cout << std::endl << "Invalid input, please re-enter: ";
+				std::cin >> input;
+			}
 			std::cout << std::endl;
 			
 			//Company Menu Input 1: Add a company to the directory
@@ -103,16 +125,40 @@ void Menu::userMenu()
 				//Input for menu
 				std::cin >> companyName;
 
+				//Input Validation
+				while (std::cin.fail()) {
+					std::cin.clear();
+					std::cin.ignore(80, '\n');
+					std::cout << std::endl << "Invalid input, please re-enter: ";
+					std::cin >> input;
+				}
+
 				//Prints out open floors left for user to pick for the new company
 				building.openFloorsLeft();
+
+				//Input for menu
 				std::cout << "Please enter your company's first floor: ";
-
-				//Input for menu
 				std::cin >> firstFloor;
-				std::cout << "Please enter your company's last floor: ";
+
+				//Input Validation
+				while (std::cin.fail()) {
+					std::cin.clear();
+					std::cin.ignore(80, '\n');
+					std::cout << std::endl << "Invalid input, please re-enter: ";
+					std::cin >> input;
+				}
 
 				//Input for menu
+				std::cout << "Please enter your company's last floor: ";
 				std::cin >> lastFloor;
+
+				//Input Validation
+				while (std::cin.fail()) {
+					std::cin.clear();
+					std::cin.ignore(80, '\n');
+					std::cout << std::endl << "Invalid input, please re-enter: ";
+					std::cin >> input;
+				}
 				std::cout << std::endl;
 
 				//Validates user-input to ensure floor selection was acceptable
@@ -171,6 +217,15 @@ void Menu::userMenu()
 
 			//Input for menu
 			std:: cin >> input; 
+
+			//Input Validation
+			while (std::cin.fail()) {
+				std::cin.clear();
+				std::cin.ignore(80, '\n');
+				std::cout << std::endl << "Invalid input, please re-enter: ";
+				std::cin >> input;
+			}
+
 			std::cout << std::endl;
 
 
@@ -182,6 +237,15 @@ void Menu::userMenu()
 
 				//Input for menu
 				std:: cin >> input; 
+
+				//Input Validation
+				while (std::cin.fail()) {
+					std::cin.clear();
+					std::cin.ignore(80, '\n');
+					std::cout << std::endl << "Invalid input, please re-enter: ";
+					std::cin >> input;
+				}
+
 				std::cout << std::endl;
 
 				//Occupant Options Input 1: Guest menu
@@ -192,6 +256,15 @@ void Menu::userMenu()
 
 					//Input for menu
 					std:: cin >> input; 
+
+					//Input Validation
+					while (std::cin.fail()) {
+						std::cin.clear();
+						std::cin.ignore(80, '\n');
+						std::cout << std::endl << "Invalid input, please re-enter: ";
+						std::cin >> input;
+					}
+
 					std::cout << std::endl;
 
 
@@ -202,41 +275,68 @@ void Menu::userMenu()
 						guestCountRef++;
 						occupantCountRef++;
 
-						//Create space on newGuest vector for an addtional Guest
+						//Create space on derivedOccupantHolder vector for an addtional Guest
 						derivedOccupantHolder.reserve(occupantCountRef);
 
 						//Asks user to input details about the new guest
 						std::cout << "Please enter your guest's first name: ";
-
-						//Input for menu
 						std::cin >> firstName;
+
+						//Input Validation
+						while (std::cin.fail()) {
+							std::cin.clear();
+							std::cin.ignore(80, '\n');
+							std::cout << std::endl << "Invalid input, please re-enter: ";
+							std::cin >> input;
+						}
+						
+						//Input for menu
 						std::cout << "Please enter your guest's last name: ";
-
-						//Input for menu
 						std::cin >> lastName;
-						std::cout << "Please enter your guest's age: ";
+
+						//Input Validation
+						while (std::cin.fail()) {
+							std::cin.clear();
+							std::cin.ignore(80, '\n');
+							std::cout << std::endl << "Invalid input, please re-enter: ";
+							std::cin >> input;
+						}
 
 						//Input for menu
+						std::cout << "Please enter your guest's age: ";
 						std::cin >> age;
+
+						//Input Validation
+						while (std::cin.fail()) {
+							std::cin.clear();
+							std::cin.ignore(80, '\n');
+							std::cout << std::endl << "Invalid input, please re-enter: ";
+							std::cin >> input;
+						}
+
 						std::cout << std::endl;
 
 						//Adds guest to directory
 						derivedOccupantHolder.push_back(new Guest(firstName, lastName, age));
 
-						//Output confirming the new guest has been added to the directory, uses overloaded printIdentifier function that takes in an object
+						//Output confirming the new guest has been added to the directory, uses overloaded Addtion function that determines which function to use
+						//base on the third argument
 						printViewRef.Addition(firstName, lastName, age);
 
 						//Bring user back to the Building menu
 						continue;
 					}
-					//Guest Menu Input 2: View all guests in directory
+
+					//Guest Menu Input 2:  Return to the Main Menu
 					else if (input == 2) {
+
 						//Bring user back to the Building menu
 						continue;
+
 					}
 					//Guest Menu: If 1 or 2 was not entered, output error message and have user re-input
 					else {
-						while (input != 1 && input != 2 && input != 3) {
+						while (input != 1 && input != 2) {
 							std::cout << "Invalid Input. Please re-enter\n ";
 							break;
 
@@ -251,30 +351,56 @@ void Menu::userMenu()
 
 					//Input for menu
 					std::cin >> input; 
-					std::cout << std::endl;
 
+					//Input Validation
+					while (std::cin.fail()) {
+						std::cin.clear();
+						std::cin.ignore(80, '\n');
+						std::cout << std::endl << "Invalid input, please re-enter: ";
+						std::cin >> input;
+					}
+
+					std::cout << std::endl;
 
 					//Company Employee Menu Input 1: Add a Company Employee
 					if (input == 1) {
 
 						//Sets companyCheck to false, companyCheck validates that a company exists in the directory for
 						//a Company Employee to be employed to
-						bool companyCheck = false;
+						static bool companyCheck = false;
 
 						//Increments number of Company Employees
 						companyEmployeeCountRef++;
 						occupantCountRef++;
 
-						//Creates space on the newCompany vector for a new Company Employee
-						newCompanyEmployee.reserve(occupantCountRef);
+						//Creates space on the derivedOccupantHolder vector for a new Company Employee
+						derivedOccupantHolder.reserve(occupantCountRef);
 						std::cout << "Please enter your company employee's first name: ";
 
 						//Input for menu
 						std::cin >> firstName;
+
+						//Input Validation
+						while (std::cin.fail()) {
+							std::cin.clear();
+							std::cin.ignore(80, '\n');
+							std::cout << std::endl << "Invalid input, please re-enter: ";
+							std::cin >> input;
+						}
+
 						std::cout << "Please enter your company employee's last name: ";
 
 						//Input for menu
 						std::cin >> lastName;
+
+						//Input Validation
+						while (std::cin.fail()) {
+							std::cin.clear();
+							std::cin.ignore(80, '\n');
+							std::cout << std::endl << "Invalid input, please re-enter: ";
+							std::cin >> input;
+						}
+
 						std::cout << "Current Companies in the directory" << std::endl;
 						std::cout << "----------------------------------" << std::endl;
 
@@ -288,6 +414,7 @@ void Menu::userMenu()
 						}
 
 						//If companies do exist in the directory, print out all of the options for a Company Employee to pick from
+						//using a range based for loop
 						else {
 
 							std::cout << "Company Directory" << std::endl;
@@ -297,11 +424,18 @@ void Menu::userMenu()
 
 						}
 
-
 						std::cout << "Please enter your employer based on the provided companies in the directory: ";
 
 						//Input for company employed to
 						std::cin >> companyEmployed;
+
+						//Input Validation
+						while (std::cin.fail()) {
+							std::cin.clear();
+							std::cin.ignore(80, '\n');
+							std::cout << std::endl << "Invalid input, please re-enter: ";
+							std::cin >> input;
+						}
 
 						//If the name input into companyEmployed is in newCompany, set company check to true and break out of the range based for loop
 						for (auto& companyDirectory : newCompany) {
@@ -314,28 +448,34 @@ void Menu::userMenu()
 						//If user input a valid company, then add them into the directory
 						if (companyCheck==true) {
 							derivedOccupantHolder.push_back( new CompanyEmployee(firstName, lastName, companyEmployed));
+
+							//Output letting user know their new company employee has been added to the directory using an overloaded function
 							printViewRef.Addition(firstName, lastName, companyEmployed);
 						}
 
 						//Output message if company employee could not be added to the directory
 						else {
+
 							std::cout << firstName << " " << lastName << " could not be added, as " << companyEmployed << " is not in directory!" << std::endl;
 
-							//Company Employee could not be added, decrement from counter
+							//Company Employee could not be added, decrement from counters
 							companyEmployeeCountRef--;
 							occupantCountRef--;
 						}
+
 						continue;
 
 					}
-					//Company Employee Menu Input 2: View all Company Employees
+
+					//Company Employee Menu Input 2:  Return to the Main Menu
 					else if (input == 2) {
 						//Bring user back to the Building menu
 						continue;
 					}
+
 					//Company Employee Menu: If 1 or 2 was not entered, output error message and have user re-input
 					else {
-						while (input != 1 && input != 2 && input != 3) {
+						while (input != 1 && input != 2) {
 							std::cout << "Invalid Input. Please re-enter\n ";
 							break;
 						}
@@ -344,55 +484,90 @@ void Menu::userMenu()
 				//Occupant Options Input 3: Building Employee menu
 				else if (input == 3) {
 
-					//Print out possible options for user based on Company Employee object
+					//Print out possible options for user based on Building Employee object
 					buildEmployee.printOccupantMenu();
 
 					//Input for menu
 					std:: cin >> input; 
+
+					//Input Validation
+					while (std::cin.fail()) {
+						std::cin.clear();
+						std::cin.ignore(80, '\n');
+						std::cout << std::endl << "Invalid input, please re-enter: ";
+						std::cin >> input;
+					}
+
 					std::cout << std::endl;
 
 
-					//Company Employee Menu Input 2: Add a Building Employee
+					//Building Employee Menu Input 1: Add a Building Employee
 					if (input == 1) {
 
-						//Increment counter for number of Building Employees
+						//Increment counter for number of Building Employees and occupants
 						buildingEmployeeCountRef++;
 						occupantCountRef++;
-						//Reserve space on newBuildingEmployee vector for a new Building Employee
-						newBuildingEmployee.reserve(occupantCountRef);
 
-
-						std::cout << "Please enter the building employees's first name: ";
+						//Reserve space on derivedOccupantHolder vector for a new Building Employee
+						derivedOccupantHolder.reserve(occupantCountRef);
 
 						//Input for Building Employee's first name
+						std::cout << "Please enter the building employees's first name: ";
 						std::cin >> firstName;
-						std::cout << "Please enter your building employees's last name: ";
 
+						//Input Validation
+						while (std::cin.fail()) {
+							std::cin.clear();
+							std::cin.ignore(80, '\n');
+							std::cout << std::endl << "Invalid input, please re-enter: ";
+							std::cin >> input;
+						}
+						
 						//Input for Building Employee's last name
 						std::cin >> lastName;
-						std::cout << "Please enter your building employees's position: ";
+
+						//Input Validation
+						while (std::cin.fail()) {
+							std::cin.clear();
+							std::cin.ignore(80, '\n');
+							std::cout << std::endl << "Invalid input, please re-enter: ";
+							std::cin >> input;
+						}
+
+						std::cout << "Please enter your building employees's last name: ";
 
 						//Input for Building Employee's position
+						std::cout << "Please enter your building employees's position: ";
 						std::cin >> position;
 
-						//Add employee to newBuildingEmployee vector
+						//Input Validation
+						while (std::cin.fail()) {
+							std::cin.clear();
+							std::cin.ignore(80, '\n');
+							std::cout << std::endl << "Invalid input, please re-enter: ";
+							std::cin >> input;
+						}
+
+						//Add building employee to derivedOccupantHolder vector
 						derivedOccupantHolder.push_back(new BuildingEmployee(firstName, lastName, position));
 
-						//Print confirmation that the new Building Employee has been added to the directory, uses overloaded "printIdentifier"
-						//function by passing in type Building Employee
+						//Print confirmation that the new Building Employee has been added to the directory, uses overloaded "Addition"
+						//function by passing a string in the third argument
 						std::cout << std::endl;
 						printViewRef.Addition(firstName,lastName,position);
 						continue;
 					}
-					//Building Employee Menu Input 2: View all Building Employees
+
+					//Building Employee Menu Input 2: Return to the Main Menu
 					else if (input == 2) {
 
 						//Bring user back to the Building menu
 						continue;
 					}
+
 					//Building Employee Menu: If 1 or 2 was not entered, output error message and have user re-input
 					else {
-						while (input != 1 && input != 2 && input != 3) {
+						while (input != 1 && input != 2) {
 							std::cout << "Invalid Input. Please re-enter\n ";
 							break;
 

@@ -1,11 +1,16 @@
+//////////////////////////
+// Tom Petrangelo 
+// CIS 554 - OOP in C++ Final Project
+// Building and Floor Access
+// Due Date: 9/17/19
+//////////////////////////
+
 //Pre-processor directives
 #include <iostream>
 #include "Building.h"
 
 //Static vector containing the number of open floors left in a building for a company to occupy
 std::vector<int> Building::numberOfFloorsLeft;
-
-
 
 //Building constructor
 Building::Building(int numFloors) : numberOfFloors{numFloors}

@@ -1,3 +1,10 @@
+//////////////////////////
+// Tom Petrangelo 
+// CIS 554 - OOP in C++ Final Project
+// Building and Floor Access
+// Due Date: 9/17/19
+//////////////////////////
+
 //Pre-processor directives
 #pragma once
 #include <string>
@@ -21,14 +28,13 @@ public:
 	//Building destructor
 	~Building();
 	
-	//Returns a string that states the number of floors open for a Company to choose from
+	//Returns a string that states the number of floors open for a company to choose from
 	void openFloorsLeft();
 
 	//Checks to ensure user can add another company to the directory
 	bool canAddCompany();
 
-	
-	//Checks to ensure a user inputs a valid selection of floors for their new Company
+	//Checks to ensure a user inputs a valid selection of floors for their new company
 	bool validateCompanyFloors(int startFloor, int endFloor);
 
 private:
