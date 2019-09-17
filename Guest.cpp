@@ -47,7 +47,7 @@ void Guest::printStatus()
 {
 	std::cout << "----------------------------------------" << std::endl;
 
-	std::cout << "First Name: " << getFirstName() << ", " << getLastName() << " Age: " << getAge() << std::endl;
+	std::cout << "|First Name: " << getFirstName() << "| |Last Name: " << getLastName() << "| |Age: " << getAge() << "|" << std::endl;
 
 	std::cout << "----------------------------------------" << std::endl << std::endl;
 

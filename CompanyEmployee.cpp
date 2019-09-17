@@ -48,7 +48,7 @@ void CompanyEmployee::printStatus()
 {
 	std::cout << "----------------------------------------" << std::endl;
 		
-	std::cout << "First Name: " << getFirstName() << ", " << getLastName() << " Company Employed At: " << getCompanyWorkedFor() << std::endl;
+	std::cout << "|First Name: " << getFirstName() << "| |Last Name: " << getLastName() << "| |Company Employed At: " << getCompanyWorkedFor() << "|" << std::endl;
 
 	std::cout << "----------------------------------------" << std::endl << std::endl;
 }

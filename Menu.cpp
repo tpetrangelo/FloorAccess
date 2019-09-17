@@ -31,10 +31,10 @@ static int buildingEmployeetCount{ 0 };
 static int occupantCount{ 0 };
 
 //Reference variables used for adding to occupant counters
-static int& guestCountRef = guestCount;
-static int& companyEmployeeCountRef = companyEmployeeCount;
-static int& buildingEmployeeCountRef = buildingEmployeetCount;
-static int& occupantCountRef = occupantCount;
+int& guestCountRef = guestCount;
+int& companyEmployeeCountRef = companyEmployeeCount;
+int& buildingEmployeeCountRef = buildingEmployeetCount;
+int& occupantCountRef = occupantCount;
 
 void Menu::userStartMenu()
 {
@@ -428,6 +428,7 @@ void Menu::userMenu()
 
 						//Input for company employed to
 						std::cin >> companyEmployed;
+						std::cout << std::endl;
 
 						//Input Validation
 						while (std::cin.fail()) {
@@ -456,7 +457,7 @@ void Menu::userMenu()
 						//Output message if company employee could not be added to the directory
 						else {
 
-							std::cout << firstName << " " << lastName << " could not be added, as " << companyEmployed << " is not in directory!" << std::endl;
+							std::cout << firstName << " " << lastName << " could not be added, as " << companyEmployed << " is not in directory!" << std::endl << std::endl;
 
 							//Company Employee could not be added, decrement from counters
 							companyEmployeeCountRef--;
@@ -524,6 +525,7 @@ void Menu::userMenu()
 						}
 						
 						//Input for Building Employee's last name
+						std::cout << "Please enter your building employees's last name: ";
 						std::cin >> lastName;
 
 						//Input Validation
@@ -534,7 +536,6 @@ void Menu::userMenu()
 							std::cin >> input;
 						}
 
-						std::cout << "Please enter your building employees's last name: ";
 
 						//Input for Building Employee's position
 						std::cout << "Please enter your building employees's position: ";

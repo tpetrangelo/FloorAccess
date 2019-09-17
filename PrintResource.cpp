@@ -39,7 +39,7 @@ void PrintResource::printOccupantStatus()
 //Opening output and menu options for building creation
 void PrintResource::runStartMenu()
 {
-	std::cout << "Welcome to Building Builder 2019!" << std::endl
+	std::cout << "Welcome to Building Builder 2019.....Build 1.0!" << std::endl << std::endl
 		<< "Please enter the number of floors for your new building!" << std::endl
 		<< "Number of floors (floor 1 is the lobby): ";
 }
