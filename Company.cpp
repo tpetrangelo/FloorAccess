@@ -78,7 +78,6 @@ void Company::printCompanyInfo()
 	else {
 		std::cout << getCompanyName() << " Occupies Floors: " << getStartingFloor() << " through " << getEndingFloor() << std::endl;
 	}
-	std::cout << std::endl;
 	std::cout << "----------------------------------------" << std::endl;
 
 }
